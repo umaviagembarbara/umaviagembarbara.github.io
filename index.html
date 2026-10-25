@@ -415,6 +415,55 @@ select[data-papel]{border:1px solid var(--linha);border-radius:9px;padding:6px 8
 .ag-it b{display:block;font-size:13.5px;color:var(--tinta)}
 .ag-it small{display:block;color:var(--suave);font-size:12px}
 /* ---------- celular (ate 760 px): menu embaixo, tabelas em cartoes ---------- */
+/* ---------- expedicoes (viagens em grupo) ---------- */
+.exp-grade{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:14px}
+.exp-card{padding:16px 18px;cursor:pointer;display:flex;flex-direction:column;gap:9px;transition:transform .15s,box-shadow .15s,border-color .15s}
+.exp-card:hover{transform:translateY(-2px);border-color:var(--coral);box-shadow:0 10px 26px rgba(14,58,75,.12)}
+.exp-card h3{margin:0;font-size:18px;color:var(--navy);line-height:1.25}
+.exp-card .sub{margin:0;font-size:12.5px;color:var(--suave)}
+.exp-sel{display:flex;gap:6px;flex-wrap:wrap}
+.exp-nums{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;border-top:1px solid var(--linha);padding-top:10px}
+.exp-nums small{display:block;font-size:11px;color:var(--suave)}
+.exp-nums b{font-size:15px;color:var(--navy);white-space:nowrap}
+.vagas{display:flex;flex-direction:column;gap:5px;font-size:12.5px;color:var(--suave)}
+.vagas b{color:var(--navy)}
+.vagas .barra{height:9px;position:relative;min-width:0}
+.vagas .minimo{position:absolute;top:0;bottom:0;width:2px;background:var(--navy);opacity:.6}
+.exp-cab{display:flex;align-items:center;gap:14px;padding:12px 16px;margin-bottom:12px;flex-wrap:wrap}
+.exp-cab .tx{flex:1;min-width:220px}
+.exp-cab h2{margin:0;font-size:20px;color:var(--navy);display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.exp-cab p{margin:2px 0 0;font-size:13px;color:var(--suave)}
+.exp-add{margin-bottom:12px}
+.exp-add>b{color:var(--navy)}
+.exp-add .linha{display:flex;gap:8px;flex-wrap:wrap;margin:8px 0 6px}
+.exp-add input,.exp-add select,.sel-mini{border:1px solid var(--linha);border-radius:9px;padding:8px 10px;font:inherit;font-size:13.5px;background:#fff;color:var(--tinta)}
+.exp-add input{flex:1;min-width:220px}
+.exp-add input:focus,.exp-add select:focus,.sel-mini:focus{outline:2px solid var(--coral-claro);border-color:var(--coral)}
+.sel-mini{padding:5px 8px;font-size:12.5px;max-width:180px;cursor:pointer}
+.tabela tr.apagada td{opacity:.5}
+.q-grade{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:12px}
+.q-card{padding:12px 14px}
+.q-card.at{border-color:#F2D29A}.q-card.ruim{border-color:#F2B8B5}
+.q-cab{display:flex;align-items:center;gap:8px;margin-bottom:4px}
+.q-cab svg{width:18px;height:18px;color:var(--coral-2)}
+.q-cab b{color:var(--navy);font-size:15px}
+.q-cap{margin-left:auto;font-weight:700;color:var(--suave);font-size:12.5px}
+.q-pessoa{display:flex;align-items:center;gap:9px;padding:7px 0;border-top:1px solid var(--linha)}
+.q-pessoa .tx{flex:1;min-width:0;display:flex;flex-direction:column}
+.q-pessoa .tx b{color:var(--navy);font-size:13.5px;cursor:pointer}
+.q-pessoa .tx b:hover{text-decoration:underline}
+.q-pessoa .tx span{font-size:11.5px;color:var(--suave)}
+.q-card .sel-mini{max-width:112px}
+.q-alerta{display:flex;align-items:center;gap:6px;margin-top:8px;font-size:12px;font-weight:600;color:#A96A10}
+.q-card.ruim .q-alerta{color:#B23A36}
+.q-alerta svg{width:15px;height:15px;flex:none}
+.q-sem{margin-bottom:12px;border-style:dashed;border-color:var(--coral)}
+.q-sem h4{margin:0 0 4px;font-size:12px;letter-spacing:.6px;text-transform:uppercase;color:var(--coral-2)}
+.itens-tab{margin:0}
+.itens-tab td{padding:4px 6px}
+.itens-tab input{width:100%;border:1px solid var(--linha);border-radius:8px;padding:6px 8px;font:inherit;font-size:13px}
+textarea.copia{width:100%;min-height:280px;border:1px solid var(--linha);border-radius:10px;padding:10px;font:inherit;font-size:13px}
+
 @media (max-width:760px){
   html,body{height:auto}
   .app,.app.recolhido{display:block;height:auto}
@@ -489,6 +538,20 @@ select[data-papel]{border:1px solid var(--linha);border-radius:9px;padding:6px 8
   .toast{bottom:84px;max-width:92vw;text-align:center}
   .boas .cx{padding:22px 18px}
   .boas .bts .btn{min-width:0;width:100%}
+  /* barra de baixo: com a tela de Expedicoes sao 10 botoes; desliza para o lado quando nao cabem */
+  .menu nav{overflow-x:auto;scrollbar-width:none}
+  .menu nav::-webkit-scrollbar{display:none}
+  .menu nav button,.app.recolhido .menu nav button{min-width:57px}
+  .exp-grade,.q-grade{grid-template-columns:minmax(0,1fr)}
+  .exp-cab{padding:10px 12px;gap:10px}
+  .exp-cab h2{font-size:17px}
+  .exp-add input{min-width:0;flex:1 1 100%}
+  .exp-add select{flex:1 1 calc(50% - 4px);min-width:0}
+  .exp-add .btn{flex:1 1 100%;justify-content:center}
+  .q-card .sel-mini{max-width:46vw}
+  .itens-tab input{width:auto;flex:1;min-width:0;text-align:right}
+  .itens-tab td[data-l="Descrição"] input{text-align:left}
+  .sel-mini{max-width:60vw}
 }
 </style>
 </head>
@@ -831,7 +894,11 @@ const OPC = {
   pagtoCliente: ['Pendente', 'Sinal Pago', 'Quitado'],
   pagtoFornecedor: ['Pendente', 'Sinal Pago', 'Pago'],
   forma: ['Pix', 'Cartão de Crédito', 'Boleto', 'Transferência Internacional', 'Dinheiro', 'Outra'],
-  ckStatus: ['Pendente', 'Feito', 'Não se aplica']
+  ckStatus: ['Pendente', 'Feito', 'Não se aplica'],
+  sitGrupo: ['Montando', 'Vendas abertas', 'Grupo confirmado', 'Cancelada'],
+  sitExp: ['Interessado', 'Reservado', 'Confirmado', 'Lista de espera', 'Desistiu'],
+  tipoQuarto: ['Duplo', 'Casal', 'Triplo', 'Individual'],
+  catCusto: ['Hospedagem', 'Voos domésticos', 'Passeios e ingressos', 'Guia e líderes', 'Transporte', 'Alimentação', 'Outro']
 };
 const T = {
   clientes: { arq: 'clientes.csv', pref: 'C', dig: 3, campos: [
@@ -844,7 +911,8 @@ const T = {
     ['destino', 'Destino'], ['inicio', 'Data Início', 'data'], ['fim', 'Data Término', 'data'], ['servico', 'Serviço Contratado'], ['fornecedor', 'Fornecedor'],
     ['status', 'Status da Venda'], ['confirmacao', 'Status Confirmação'], ['moeda', 'Moeda'], ['valorVenda', 'Valor Venda', 'num'],
     ['valorNet', 'Valor Net (Fornecedor)', 'num'], ['pagtoCliente', 'Status Pagto Cliente'], ['pagtoFornecedor', 'Status Pagto Fornecedor'],
-    ['vencFornecedor', 'Vencimento Fornecedor', 'data'], ['obs', 'Observações']],
+    ['vencFornecedor', 'Vencimento Fornecedor', 'data'], ['obs', 'Observações'],
+    ['expedicao', 'ID Expedição'], ['tipoQuarto', 'Tipo de Quarto'], ['quarto', 'Quarto'], ['sitExp', 'Situação na Expedição']],
     auto: v => { const m = margem(v); return [['Duração em dias (auto)', duracao(v) ?? ''], ['Margem (auto)', m === null ? '' : numBR(m)],
       ['Margem % (auto)', m === null || !v.valorVenda ? '' : numBR(100 * m / v.valorVenda, 1) + '%'], ['Situação (auto)', situacao(v).txt]]; } },
   parcelas: { arq: 'parcelas.csv', pref: 'P', dig: 4, campos: [
@@ -853,11 +921,23 @@ const T = {
     auto: p => [['Cliente Principal (auto)', viagemDe(p.viagem)?.cliente || ''], ['Status (auto)', statusParcela(p)]] },
   checklist: { arq: 'checklist.csv', campos: [['viagem', 'ID Viagem'], ['n', 'Nº Item', 'num'], ['status', 'Status'], ['obs', 'Observações'], ['atualizado', 'Atualizado em', 'data']],
     auto: c => [['Cliente (auto)', viagemDe(c.viagem)?.cliente || ''], ['Item (auto)', DB.modelo.find(m => m.n === c.n)?.item || '']] },
-  modelo: { arq: 'checklist_modelo.csv', campos: [['n', 'Nº', 'num'], ['categoria', 'Categoria'], ['item', 'Item'], ['dias', 'Dias de antecedência', 'num']] }
+  modelo: { arq: 'checklist_modelo.csv', campos: [['n', 'Nº', 'num'], ['categoria', 'Categoria'], ['item', 'Item'], ['dias', 'Dias de antecedência', 'num']] },
+  /* expedicao = viagem em grupo; cada participante e uma viagem normal com o campo expedicao preenchido */
+  expedicoes: { arq: 'expedicoes.csv', pref: 'E', dig: 3, campos: [
+    ['id', 'ID Expedição'], ['nome', 'Nome'], ['destino', 'Destino'], ['inicio', 'Data Início', 'data'], ['fim', 'Data Término', 'data'], ['moeda', 'Moeda'],
+    ['vagasMin', 'Vagas Mínimas', 'num'], ['vagasMax', 'Vagas Máximas', 'num'], ['situacao', 'Situação'],
+    ['precoDuplo', 'Preço por Pessoa (Quarto Duplo)', 'num'], ['adicIndividual', 'Adicional Quarto Individual', 'num'], ['precoTriplo', 'Preço por Pessoa (Quarto Triplo)', 'num'],
+    ['entradaPct', 'Entrada (%)', 'num'], ['quitarDias', 'Quitar até (dias antes do início)', 'num'], ['lideres', 'Líderes'], ['obs', 'Observações']] },
+  custos: { arq: 'custos_grupo.csv', pref: 'G', dig: 4, campos: [
+    ['id', 'ID Custo'], ['expedicao', 'ID Expedição'], ['descricao', 'Descrição'], ['categoria', 'Categoria'], ['fornecedor', 'Fornecedor'], ['moeda', 'Moeda'],
+    ['valor', 'Valor', 'num'], ['porPessoa', 'Valor por Pessoa?', 'sn'], ['vencimento', 'Vencimento', 'data'], ['pago', 'Pago?', 'sn'], ['dataPaga', 'Data Paga', 'data'], ['obs', 'Observações']] },
+  itens: { arq: 'itens_individuais.csv', pref: 'I', dig: 4, campos: [
+    ['id', 'ID Item'], ['viagem', 'ID Viagem'], ['descricao', 'Descrição'], ['moeda', 'Moeda'], ['valor', 'Valor de Venda', 'num'], ['custo', 'Custo', 'num'], ['obs', 'Observações']],
+    auto: i => [['Participante (auto)', viagemDe(i.viagem)?.cliente || '']] }
 };
-const ORDEM_TAB = ['clientes', 'viagens', 'parcelas', 'checklist', 'modelo'];
+const ORDEM_TAB = ['clientes', 'viagens', 'parcelas', 'checklist', 'modelo', 'expedicoes', 'custos', 'itens'];
 const DEPOIS = [];                                   // funcoes que rodam depois que a tela entra na pagina
-const DB = { clientes: [], viagens: [], parcelas: [], checklist: [], modelo: [] };
+const DB = { clientes: [], viagens: [], parcelas: [], checklist: [], modelo: [], expedicoes: [], custos: [], itens: [] };
 const MODELO_PADRAO = [
   ['Documentação e Requisitos de Entrada', 'Passaporte válido (mínimo 6 meses da data de retorno da viagem)', 30],
   ['Documentação e Requisitos de Entrada', 'Nome nas reservas conferido exatamente com o passaporte', 30],
@@ -983,13 +1063,100 @@ function linkZap(cel, texto = '') {
   return 'https://wa.me/' + d + (texto ? '?text=' + encodeURIComponent(texto) : '');
 }
 
+/* ---------------- expedicoes (viagens em grupo) ---------------- */
+const expDe = id => DB.expedicoes.find(e => e.id === id);
+const participantes = e => DB.viagens.filter(v => v.expedicao === e.id);
+const OCUPA = new Set(['Reservado', 'Confirmado']);
+const ocupaVaga = v => OCUPA.has(v.sitExp);
+const STATUS_DA_SIT = { Interessado: 'Em negociação', 'Lista de espera': 'Em negociação', Reservado: 'Fechada', Confirmado: 'Fechada', Desistiu: 'Cancelada' };
+const CLS_SIT_EXP = { Interessado: 'info', Reservado: 'at', Confirmado: 'ok', 'Lista de espera': 'navy', Desistiu: 'ruim' };
+const ROT_QUARTO = { Duplo: 'Duplo (2 camas)', Casal: 'Duplo (casal)', Triplo: 'Triplo', Individual: 'Individual' };
+const CAP_QUARTO = { Duplo: 2, Casal: 2, Triplo: 3, Individual: 1 };
+const tem = x => x !== null && x !== undefined && x !== '';
+function precoQuarto(e, tipo) {                       // preco fechado por pessoa conforme o quarto; null = ela ainda nao preencheu
+  if (!e) return null;
+  if (tipo === 'Triplo' && tem(e.precoTriplo)) return e.precoTriplo;
+  if (!tem(e.precoDuplo)) return null;
+  return tipo === 'Individual' ? e.precoDuplo + (e.adicIndividual || 0) : e.precoDuplo;
+}
+const itensDe = v => DB.itens.filter(i => i.viagem === v.id);
+const totalViagem = v => (v.valorVenda || 0) + itensDe(v).filter(i => (i.moeda || v.moeda) === (v.moeda || 'USD')).reduce((s, i) => s + (i.valor || 0), 0);
+function situacaoExp(e) {
+  const h = hojeISO();
+  if (e.situacao === 'Cancelada') return { k: 'cancelada', txt: 'Cancelada', cls: 'ruim' };
+  if (e.inicio && h >= e.inicio && (!e.fim || h <= e.fim)) return { k: 'andamento', txt: 'Em viagem', cls: 'coral' };
+  if (e.fim && h > e.fim) return { k: 'concluida', txt: 'Concluída', cls: '' };
+  return { k: 'futura', txt: e.situacao || 'Montando', cls: { 'Vendas abertas': 'info', 'Grupo confirmado': 'ok' }[e.situacao] || 'navy' };
+}
+function quartosExp(e) {
+  const mapa = new Map();
+  participantes(e).filter(v => v.sitExp !== 'Desistiu' && v.quarto).forEach(v => { if (!mapa.has(v.quarto)) mapa.set(v.quarto, []); mapa.get(v.quarto).push(v); });
+  return [...mapa.entries()].sort((a, b) => a[0].localeCompare(b[0], 'pt-BR', { numeric: true })).map(([nome, ps]) => {
+    const tipos = [...new Set(ps.map(v => v.tipoQuarto || 'Duplo'))];
+    const tipo = tipos[0]; const cap = CAP_QUARTO[tipo] || 2;
+    let alerta = '';
+    if (tipos.length > 1) alerta = 'pessoas com tipos de quarto diferentes';
+    else if (ps.length > cap) alerta = `${ps.length} pessoas num quarto ${ROT_QUARTO[tipo].toLowerCase()}`;
+    else if (ps.length < cap) alerta = cap - ps.length === 1 ? 'falta 1 pessoa' : `faltam ${cap - ps.length} pessoas`;
+    return { nome, ps, tipo, cap, alerta };
+  });
+}
+function proximoQuarto(e) {
+  const n = Math.max(0, ...participantes(e).map(v => parseInt(String(v.quarto || '').replace(/\D/g, ''), 10) || 0));
+  return 'Quarto ' + (n + 1);
+}
+const valorCusto = (c, nPessoas) => (c.valor || 0) * (c.porPessoa ? nPessoas : 1);
+function resumoExp(e) {
+  const m = e.moeda || 'USD'; const ps = participantes(e); const oc = ps.filter(ocupaVaga);
+  const conta = s => ps.filter(v => v.sitExp === s).length;
+  const receita = oc.reduce((s, v) => s + ((v.moeda || m) === m ? totalViagem(v) : 0), 0);
+  const parc = DB.parcelas.filter(p => oc.some(v => v.id === p.viagem) && (p.moeda || m) === m);
+  const soma = (xs, f) => xs.reduce((s, x) => s + (f(x) || 0), 0);
+  const cs = DB.custos.filter(c => c.expedicao === e.id);
+  const mesma = cs.filter(c => (c.moeda || m) === m), outras = {};
+  cs.filter(c => (c.moeda || m) !== m).forEach(c => { outras[c.moeda] = (outras[c.moeda] || 0) + valorCusto(c, oc.length); });
+  const custoGrupo = soma(mesma, c => valorCusto(c, oc.length));
+  const custoInd = soma(oc.flatMap(itensDe).filter(i => (i.moeda || m) === m), i => i.custo);
+  const fixos = soma(mesma.filter(c => !c.porPessoa), c => c.valor), porPessoa = soma(mesma.filter(c => c.porPessoa), c => c.valor);
+  const ref = precoQuarto(e, 'Duplo');
+  const custo = custoGrupo + custoInd;
+  return {
+    m, ps, oc, ocupadas: oc.length, interessados: conta('Interessado'), espera: conta('Lista de espera'), desistiu: conta('Desistiu'),
+    receita, recebido: soma(parc.filter(p => p.pago), p => p.valor), aReceber: soma(parc.filter(p => !p.pago), p => p.valor),
+    atrasado: soma(parc.filter(p => statusParcela(p) === 'Atrasado'), p => p.valor),
+    custoGrupo, custoInd, custo, custoPago: soma(mesma.filter(c => c.pago), c => valorCusto(c, oc.length)), outras,
+    margem: oc.length ? receita - custo : null, fixos, porPessoa,
+    empate: ref && ref > porPessoa && fixos ? Math.ceil(fixos / (ref - porPessoa)) : null
+  };
+}
+function alertasExp(e) {
+  const h = hojeISO(); const r = resumoExp(e); const out = []; const sit = situacaoExp(e);
+  if (sit.k === 'cancelada' || sit.k === 'concluida') return out;
+  if (!tem(e.precoDuplo)) out.push({ cls: 'info', ic: 'dinheiro', b: 'Preço por pessoa ainda não preenchido', s: 'Preencha em Editar expedição para o sistema calcular o valor de cada participante.', acao: 'editar-exp', id: e.id });
+  if (e.vagasMin && r.ocupadas < e.vagasMin) out.push({ cls: 'info', ic: 'clientes', b: `Faltam ${e.vagasMin - r.ocupadas} para o mínimo de ${e.vagasMin} pessoas`, s: `${r.ocupadas} com vaga garantida${r.interessados ? ` · ${r.interessados} ${r.interessados === 1 ? 'interessado' : 'interessados'}` : ''}`, acao: 'exp-aba', k: 'participantes' });
+  if (e.vagasMax && r.ocupadas > e.vagasMax) out.push({ cls: 'ruim', ic: 'clientes', b: `${r.ocupadas} pessoas para ${e.vagasMax} vagas`, s: 'Passou do máximo de vagas da expedição.', acao: 'exp-aba', k: 'participantes' });
+  const semQuarto = r.oc.filter(v => !v.quarto);
+  if (semQuarto.length) out.push({ cls: 'at', ic: 'clientes', b: `${semQuarto.length} ${semQuarto.length === 1 ? 'pessoa sem quarto' : 'pessoas sem quarto'}`, s: semQuarto.map(v => v.cliente).join(', '), acao: 'exp-aba', k: 'quartos' });
+  quartosExp(e).filter(q => q.alerta).forEach(q => out.push({ cls: q.ps.length > q.cap ? 'ruim' : 'at', ic: 'clientes', b: `${q.nome} · ${ROT_QUARTO[q.tipo] || q.tipo}: ${q.alerta}`, s: q.ps.map(v => v.cliente).join(', ') + (q.ps.length < q.cap && q.tipo !== 'Individual' ? ' · achar dupla ou cobrar quarto individual' : ''), acao: 'exp-aba', k: 'quartos' }));
+  r.oc.forEach(v => {
+    const ps = DB.parcelas.filter(p => p.viagem === v.id);
+    if (!ps.length) out.push({ cls: 'at', ic: 'parcelas', b: `${v.cliente}: nenhuma parcela lançada`, s: `total ${din(totalViagem(v), v.moeda)}`, acao: 'participante', id: v.id });
+    ps.filter(p => statusParcela(p) === 'Atrasado').forEach(p => out.push({ cls: 'ruim', ic: 'dinheiro', b: `Parcela atrasada · ${v.cliente}`, s: `${din(p.valor, p.moeda)} · venceu ${BR(p.prevista)}`, acao: 'parcela', pid: p.id }));
+  });
+  alertasPassaporte().filter(a => a.v.expedicao === e.id).forEach(a => out.push({ cls: 'at', ic: 'pass', b: `Passaporte de ${a.c.nome} ${a.txt}`, s: `validade ${BR(a.c.validade)}`, acao: 'cliente', id: a.c.id }));
+  DB.custos.filter(c => c.expedicao === e.id && !c.pago && c.vencimento && dias(h, c.vencimento) <= 15).forEach(c => out.push({ cls: c.vencimento < h ? 'ruim' : 'at', ic: 'relogio',
+    b: `Pagar ${c.descricao || c.fornecedor || 'custo do grupo'}`, s: `${c.fornecedor ? c.fornecedor + ' · ' : ''}${din(valorCusto(c, r.ocupadas), c.moeda)} · ${c.vencimento < h ? 'venceu' : 'vence'} ${BR(c.vencimento)}`, acao: 'custo', id: c.id }));
+  return out;
+}
+
 /* ---------------- dados na nuvem (Supabase): login, aprovacao, sincronizacao linha a linha e atualizacao ao vivo ---------------- */
 const P = { modo: 'nenhum', sujo: new Set(), timer: null, erro: null, ultimo: null, perfil: null, papel: null, pendentes: 0 };
 const LS_DB = 'uvb-crm-v3-dados', LS_PREF = 'uvb-crm-pref';
-const TAB_DB = { clientes: 'clientes', viagens: 'viagens', parcelas: 'parcelas', checklist: 'checklist', modelo: 'checklist_modelo' };
+const TAB_DB = { clientes: 'clientes', viagens: 'viagens', parcelas: 'parcelas', checklist: 'checklist', modelo: 'checklist_modelo', expedicoes: 'expedicoes', custos: 'custos_grupo', itens: 'itens_individuais' };
 const DB_TAB = Object.fromEntries(Object.entries(TAB_DB).map(([a, b]) => [b, a]));
-const CHAVE = { clientes: ['id'], viagens: ['id'], parcelas: ['id'], checklist: ['viagem', 'n'], modelo: ['n'] };
-const ORDEM_SYNC = ['viagens', 'clientes', 'modelo', 'parcelas', 'checklist'];     // viagens antes de parcelas/checklist (chave estrangeira)
+const CHAVE = { clientes: ['id'], viagens: ['id'], parcelas: ['id'], checklist: ['viagem', 'n'], modelo: ['n'], expedicoes: ['id'], custos: ['id'], itens: ['id'] };
+// chaves estrangeiras: expedicoes antes de custos; viagens antes de parcelas, checklist e itens
+const ORDEM_SYNC = ['expedicoes', 'viagens', 'clientes', 'modelo', 'parcelas', 'checklist', 'custos', 'itens'];
 const snake = k => k.replace(/[A-Z]/g, m => '_' + m.toLowerCase());
 const chaveDe = (tab, o) => CHAVE[tab].map(k => String(o[k])).join('|');
 const configurado = () => !!(SUPA.url && SUPA.key);
@@ -1045,7 +1212,9 @@ function lerEspelho() { try { return JSON.parse(localStorage.getItem(LS_DB) || '
 function limparEspelho() { try { localStorage.removeItem(LS_DB); } catch (e) { /* bloqueado */ } }
 function finalizarCarga() {
   DB.parcelas.forEach(p => { if (!p.moeda) p.moeda = viagemDe(p.viagem)?.moeda || 'USD'; });
-  DB.viagens.forEach(v => { if (!v.moeda) v.moeda = 'USD'; if (!v.status) v.status = 'Fechada'; if (!v.confirmacao) v.confirmacao = 'Pendente'; });
+  DB.viagens.forEach(v => { if (!v.moeda) v.moeda = 'USD'; if (!v.status) v.status = 'Fechada'; if (!v.confirmacao) v.confirmacao = 'Pendente';
+    if (v.expedicao && !v.sitExp) v.sitExp = 'Reservado'; if (v.expedicao && !v.tipoQuarto) v.tipoQuarto = 'Duplo'; });
+  DB.expedicoes.forEach(e => { if (!e.moeda) e.moeda = 'USD'; if (!e.situacao) e.situacao = 'Montando'; });
   espelhar();
   document.dispatchEvent(new CustomEvent('dados'));
 }
@@ -1167,8 +1336,15 @@ function trocaId(tab, velho, novo) {
   if (tab === 'viagens') {
     DB.parcelas.forEach(p => { if (p.viagem === velho) p.viagem = novo; });
     DB.checklist.forEach(c => { if (c.viagem === velho) c.viagem = novo; });
+    DB.itens.forEach(i => { if (i.viagem === velho) i.viagem = novo; });
     if (S.ckV === velho) S.ckV = novo;
-    P.sujo.add('parcelas'); P.sujo.add('checklist');
+    P.sujo.add('parcelas'); P.sujo.add('checklist'); P.sujo.add('itens');
+  }
+  if (tab === 'expedicoes') {
+    DB.viagens.forEach(v => { if (v.expedicao === velho) v.expedicao = novo; });
+    DB.custos.forEach(c => { if (c.expedicao === velho) c.expedicao = novo; });
+    if (S.expId === velho) S.expId = novo;
+    P.sujo.add('viagens'); P.sujo.add('custos');
   }
   document.dispatchEvent(new CustomEvent('remoto', { detail: { msg: `O código ${velho} já tinha sido usado por outra pessoa: ficou ${novo}.` } }));
 }
@@ -1460,14 +1636,16 @@ const ICON = {
   filtro: '<path d="M22 3H2l8 9.46V19l4 2v-8.54L22 3z"/>',
   chave: '<circle cx="7.5" cy="15.5" r="5.5"/><path d="m21 2-9.6 9.6M15.5 7.5l3 3L22 7l-3-3"/>',
   sair: '<path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4M16 17l5-5-5-5M21 12H9"/>',
+  expedicoes: '<path d="M5 22V3"/><path d="M5 3h13l-2.5 4.5L18 12H5"/>', cama: '<path d="M3 19V6M3 14h18v5M21 14v-1.5A3.5 3.5 0 0 0 17.5 9H11v5"/><circle cx="7" cy="11" r="2"/>',
+  copiar: '<rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15H4a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v1"/>',
   engr: '<circle cx="12" cy="12" r="3"/><path d="M12 1v3M12 20v3M4.2 4.2l2.1 2.1M17.7 17.7l2.1 2.1M1 12h3M20 12h3M4.2 19.8l2.1-2.1M17.7 6.3l2.1-2.1"/>'
 };
 const ic = n => `<svg viewBox="0 0 24 24">${ICON[n] || ''}</svg>`;
 const pil = (txt, cls = '') => `<span class="pil ${cls}">${esc(txt)}</span>`;
-const S = Object.assign({ view: 'resumo', busca: '', fV: 'proximas', fP: 'abertas', ckV: null, ckF: 'abertas', calMes: hojeISO().slice(0, 7),
+const S = Object.assign({ view: 'resumo', busca: '', fV: 'proximas', fP: 'abertas', ckV: null, ckF: 'abertas', calMes: hojeISO().slice(0, 7), expId: null, expAba: 'resumo', expF: 'ativas',
   cam: { viagens: true, parcelas: true, checklist: false, forn: true }, fM: 'proximas', fT: 'proximas', escT: 6, aviao: true, menu: 'auto' }, (() => {
   try { return JSON.parse(localStorage.getItem(LS_PREF) || '{}'); } catch (e) { return {}; } })());
-const salvaPref = () => { try { localStorage.setItem(LS_PREF, JSON.stringify({ fV: S.fV, fP: S.fP, ckF: S.ckF, cam: S.cam, fM: S.fM, fT: S.fT, escT: S.escT, aviao: S.aviao, menu: S.menu, filtros: S.filtros, ordem: S.ordem })); } catch (e) { /* sem espaco */ } };
+const salvaPref = () => { try { localStorage.setItem(LS_PREF, JSON.stringify({ fV: S.fV, fP: S.fP, ckF: S.ckF, cam: S.cam, fM: S.fM, fT: S.fT, escT: S.escT, aviao: S.aviao, menu: S.menu, filtros: S.filtros, ordem: S.ordem, expF: S.expF })); } catch (e) { /* sem espaco */ } };
 const casa = s => !S.busca || norm(s).includes(norm(S.busca));
 const COR_SIT = { futura: '#0E3A4B', andamento: '#F26B52', concluida: '#9AA6AD', cancelada: '#D8504C', negociacao: '#3C7CC4', semdata: '#9AA6AD' };
 function filtroViagem(f, v) {
@@ -1490,8 +1668,10 @@ function vResumo() {
   const andamento = fechadas.filter(v => situacao(v).k === 'andamento');
   const pax = fechadas.reduce((s, v) => s + (v.pax || 0), 0);
   const moedaPrinc = 'USD';
-  const vendido = fechadas.filter(v => (v.moeda || 'USD') === moedaPrinc).reduce((s, v) => s + (v.valorVenda || 0), 0);
-  const marg = fechadas.filter(v => (v.moeda || 'USD') === moedaPrinc).reduce((s, v) => s + (margem(v) || 0), 0);
+  const vendido = fechadas.filter(v => (v.moeda || 'USD') === moedaPrinc).reduce((s, v) => s + totalViagem(v), 0);
+  // margem: viagens avulsas pela propria margem; expedicoes pela margem do grupo (receita - custos do grupo e individuais)
+  const marg = fechadas.filter(v => !v.expedicao && (v.moeda || 'USD') === moedaPrinc).reduce((s, v) => s + (margem(v) || 0), 0)
+    + DB.expedicoes.filter(e => (e.moeda || 'USD') === moedaPrinc && situacaoExp(e).k !== 'cancelada').reduce((s, e) => s + (resumoExp(e).margem || 0), 0);
   const abertas = DB.parcelas.filter(p => !p.pago);
   const atrasadas = abertas.filter(p => statusParcela(p) === 'Atrasado');
   const aReceber = abertas.filter(p => p.moeda === moedaPrinc).reduce((s, p) => s + (p.valor || 0), 0);
@@ -1506,6 +1686,8 @@ function vResumo() {
   futuras.filter(v => v.inicio && dias(h, v.inicio) <= 7).forEach(v => alertas.push({ ord: 3, cls: 'info', ic: 'viagens', id: v.id, acao: 'ficha', b: `${v.cliente} embarca ${situacao(v).txt.toLowerCase()}`, s: `${v.destino} · ${BR(v.inicio)}` }));
   DB.viagens.filter(v => ativa(v) && v.vencFornecedor && v.pagtoFornecedor !== 'Pago' && dias(h, v.vencFornecedor) <= 7).forEach(v => alertas.push({ ord: 2, cls: dias(h, v.vencFornecedor) < 0 ? 'ruim' : 'at', ic: 'relogio', id: v.id, acao: 'ficha',
     b: `Pagar fornecedor ${v.fornecedor || ''} · ${v.cliente}`, s: `vencimento ${BR(v.vencFornecedor)} · ${din(v.valorNet, v.moeda)}` }));
+  DB.custos.filter(c => !c.pago && c.vencimento && dias(h, c.vencimento) <= 7 && expDe(c.expedicao) && situacaoExp(expDe(c.expedicao)).k !== 'cancelada').forEach(c => { const e = expDe(c.expedicao);
+    alertas.push({ ord: 2, cls: dias(h, c.vencimento) < 0 ? 'ruim' : 'at', ic: 'relogio', id: c.id, acao: 'custo', b: `Pagar ${c.descricao || c.fornecedor || 'custo do grupo'} · ${e.nome}`, s: `${c.fornecedor ? c.fornecedor + ' · ' : ''}vencimento ${BR(c.vencimento)} · ${din(valorCusto(c, resumoExp(e).ocupadas), c.moeda)}` }); });
   alertas.sort((a, b) => a.ord - b.ord);
   // embarques por mes (12 meses a partir do mes atual - 2)
   const meses = []; for (let k = -2; k < 10; k++) { const m = new Date(d.getFullYear(), d.getMonth() + k, 1); meses.push(iso(m).slice(0, 7)); }
@@ -1559,6 +1741,7 @@ function statusPass(c) {
 const FILTROS = {
   viagens: [
     { k: 'servico', rot: 'Tipo de viagem', val: v => v.servico || '—' },
+    { k: 'exp', rot: 'Expedição', val: v => expDe(v.expedicao)?.nome || 'Viagem avulsa' },
     { k: 'pais', rot: 'Destino', val: paisPrincipal },
     { k: 'mes', rot: 'Mês de embarque', val: v => mesAno(v.inicio) || '—', ord: v => v.inicio || '9' },
     { k: 'fornecedor', rot: 'Fornecedor', val: v => v.fornecedor || '—' },
@@ -1640,13 +1823,14 @@ function vViagens() {
   ${barraFiltros('viagens', base)}
   <div class="tabela-env"><table class="tabela"><thead><tr>${th('viagens', 'id', 'Viagem')}${th('viagens', 'cliente', 'Cliente')}${th('viagens', 'destino', 'Destino')}${th('viagens', 'inicio', 'Datas')}${th('viagens', 'pax', 'Pax')}${th('viagens', 'sit', 'Situação')}${th('viagens', 'fornecedor', 'Fornecedor')}${th('viagens', 'pagto', 'Pagto cliente')}${th('viagens', 'valor', 'Valor', 'num')}${th('viagens', 'ck', 'Checklist')}</tr></thead><tbody>
   ${lista.map(v => { const sit = situacao(v); const pr = progresso(v); const m = margem(v);
-    return `<tr class="clic" data-acao="ficha" data-id="${esc(v.id)}"><td data-l="Viagem"><b>${esc(v.id)}</b><div class="sub">${esc(v.servico || '')}</div></td>
+    const ex = v.expedicao && expDe(v.expedicao);
+    return `<tr class="clic" data-acao="ficha" data-id="${esc(v.id)}"><td data-l="Viagem"><b>${esc(v.id)}</b><div class="sub">${esc(v.servico || '')}${ex ? ' · ' + esc(ex.nome) : ''}</div></td>
       <td data-l=""><div class="pessoa">${ini(v.cliente)}<span style="min-width:0"><b>${esc(v.cliente)}</b><span>${v.dataVenda ? 'vendida ' + BR(v.dataVenda) : ' '}</span></span></div></td>
       <td data-l="Destino">${esc(v.destino)}</td><td data-l="Datas" style="white-space:nowrap">${BR(v.inicio)}<div class="sub">até ${BR(v.fim)} · ${duracao(v) ?? '?'} dias</div></td><td data-l="Pax">${v.pax ?? ''}</td>
       <td data-l="Situação">${pil(sit.txt, sit.cls)}${v.confirmacao && v.confirmacao !== 'Confirmado' && sit.k !== 'cancelada' ? `<div class="sub">${esc(TXT_RESERVA[v.confirmacao] || 'reserva ' + v.confirmacao.toLowerCase())}</div>` : ''}</td>
       <td data-l="Fornecedor">${esc(v.fornecedor || '—')}${v.pagtoFornecedor && v.fornecedor ? `<div class="sub">${esc(v.pagtoFornecedor)}${v.vencFornecedor && v.pagtoFornecedor !== 'Pago' ? ' · vence ' + BRc(v.vencFornecedor) : ''}</div>` : ''}</td>
       <td data-l="Pagto cliente">${pil(v.pagtoCliente || 'Pendente', v.pagtoCliente === 'Quitado' ? 'ok' : v.pagtoCliente === 'Sinal Pago' ? 'info' : 'at')}</td>
-      <td data-l="Valor" class="num">${din(v.valorVenda, v.moeda)}${m !== null ? `<div class="sub">margem ${din(m, v.moeda)}</div>` : ''}</td>
+      <td data-l="Valor" class="num">${din(ex ? totalViagem(v) : v.valorVenda, v.moeda)}${m !== null ? `<div class="sub">margem ${din(m, v.moeda)}</div>` : ''}</td>
       <td data-l="Checklist">${precisaChecklist(v) || pr.feitos ? `<div class="barra ${pr.atrasados ? 'ruim' : pr.pct < .5 ? 'at' : ''}" title="${pr.feitos} de ${pr.total}"><i style="width:${Math.round(pr.pct * 100)}%"></i></div><div class="sub">${pr.feitos}/${pr.total}${pr.atrasados ? ` · <b style="color:var(--ruim)">${pr.atrasados} atrasados</b>` : ''}</div>` : '<span class="sub">—</span>'}</td></tr>`; }).join('') || `<tr><td colspan="10" class="vazio">Nenhuma viagem com esses filtros.</td></tr>`}
   </tbody></table></div>`;
 }
@@ -1711,6 +1895,132 @@ function vChecklist() {
       <div class="t"><b>${esc(x.cliente)}</b>${pr.atrasados ? pil(pr.atrasados + ' atrasados', 'ruim') : pr.feitos === pr.total ? pil('ok', 'ok') : ''}</div>
       <div class="s"><span>${esc(x.destino)}</span><span>${BRc(x.inicio)}</span></div>
       <div class="barra ${pr.atrasados ? 'ruim' : pr.pct < .5 ? 'at' : ''}"><i style="width:${Math.round(pr.pct * 100)}%"></i></div></div>`; }).join('') || '<div class="vazio">—</div>'}</div><div>${direita}</div></div>`;
+}
+
+/* ======================== EXPEDICOES (viagens em grupo) ======================== */
+const ABAS_EXP = [['resumo', 'Resumo'], ['participantes', 'Participantes'], ['quartos', 'Quartos'], ['custos', 'Custos do grupo']];
+const ORD_SIT = { Confirmado: 0, Reservado: 1, Interessado: 2, 'Lista de espera': 3, Desistiu: 4 };
+const ordParticipantes = ps => ps.slice().sort((a, b) => (ORD_SIT[a.sitExp] ?? 9) - (ORD_SIT[b.sitExp] ?? 9) || String(a.cliente).localeCompare(String(b.cliente), 'pt-BR'));
+function barraVagas(e, r) {
+  const max = e.vagasMax || Math.max(r.ocupadas, e.vagasMin || 0, 1);
+  const cls = e.vagasMax && r.ocupadas > e.vagasMax ? 'ruim' : e.vagasMin && r.ocupadas < e.vagasMin ? 'at' : '';
+  return `<div class="vagas"><div class="barra ${cls}"><i style="width:${Math.min(100, 100 * r.ocupadas / max)}%"></i>${e.vagasMin && e.vagasMin < max ? `<b class="minimo" style="left:${100 * e.vagasMin / max}%" title="mínimo de ${e.vagasMin} pessoas"></b>` : ''}</div>
+    <span><b>${r.ocupadas}</b>${e.vagasMax ? ` de ${e.vagasMax}` : ''} ${r.ocupadas === 1 && !e.vagasMax ? 'vaga ocupada' : 'vagas ocupadas'}${e.vagasMin ? ` · mínimo ${e.vagasMin}` : ''}${r.interessados ? ` · ${r.interessados} interessado${r.interessados > 1 ? 's' : ''}` : ''}${r.espera ? ` · ${r.espera} na espera` : ''}</span></div>`;
+}
+const linhaAlerta = a => `<div class="alerta" data-acao="${a.acao}" ${a.id ? `data-id="${esc(a.id)}"` : ''} ${a.pid ? `data-pid="${esc(a.pid)}"` : ''} ${a.k ? `data-k="${a.k}"` : ''}><span class="ic ${a.cls}">${ic(a.ic)}</span><span class="tx"><b>${esc(a.b)}</b><span>${esc(a.s)}</span></span></div>`;
+function vExpedicoes() {
+  const e = S.expId && expDe(S.expId);
+  if (e) return vExpedicao(e);
+  S.expId = null;
+  const fil = { ativas: x => !['cancelada', 'concluida'].includes(situacaoExp(x).k), concluidas: x => situacaoExp(x).k === 'concluida', canceladas: x => situacaoExp(x).k === 'cancelada', todas: () => true };
+  const f = fil[S.expF] ? S.expF : 'ativas';
+  const lista = DB.expedicoes.filter(fil[f]).sort((a, b) => f === 'concluidas' ? ((a.inicio || '') > (b.inicio || '') ? -1 : 1) : ((a.inicio || '9') < (b.inicio || '9') ? -1 : 1));
+  return `<div class="filtros">${chips(f, [['ativas', 'Próximas e em viagem', DB.expedicoes.filter(fil.ativas).length], ['concluidas', 'Concluídas', DB.expedicoes.filter(fil.concluidas).length], ['canceladas', 'Canceladas', DB.expedicoes.filter(fil.canceladas).length], ['todas', 'Todas', DB.expedicoes.length]], 'expF')}</div>
+  ${lista.length ? `<div class="exp-grade">${lista.map(cartaoExp).join('')}</div>` : `<div class="card vazio">${DB.expedicoes.length ? 'Nenhuma expedição neste filtro.' : 'Nenhuma expedição ainda.<br>Clique em <b>Nova expedição</b> para montar a primeira viagem em grupo.'}</div>`}`;
+}
+function cartaoExp(e) {
+  const r = resumoExp(e); const sit = situacaoExp(e); const al = alertasExp(e);
+  return `<div class="card exp-card" data-acao="exp-abrir" data-id="${esc(e.id)}">
+    <div class="exp-sel">${pil(sit.txt, sit.cls)}${al.length ? pil(`${al.length} ${al.length === 1 ? 'pendência' : 'pendências'}`, al.some(a => a.cls === 'ruim') ? 'ruim' : 'at') : ''}</div>
+    <h3>${esc(e.nome || 'Sem nome')}</h3>
+    <p class="sub">${esc(e.destino || 'sem destino')} · ${e.inicio ? `${BR(e.inicio)} a ${BR(e.fim)}` : 'sem datas'}${e.inicio && sit.k === 'futura' ? ` · faltam ${dias(hojeISO(), e.inicio)} dias` : ''}</p>
+    ${barraVagas(e, r)}
+    <div class="exp-nums"><div><small>Receita prevista</small><b>${dinCurto(r.receita, r.m)}</b></div><div><small>Já recebido</small><b>${dinCurto(r.recebido, r.m)}</b></div><div><small>Margem prevista</small><b>${r.margem === null ? '—' : dinCurto(r.margem, r.m)}</b></div></div></div>`;
+}
+function vExpedicao(e) {
+  const r = resumoExp(e); const sit = situacaoExp(e);
+  const aba = ABAS_EXP.some(([k]) => k === S.expAba) ? S.expAba : 'resumo';
+  const nCustos = DB.custos.filter(c => c.expedicao === e.id).length;
+  const cont = { participantes: r.ps.filter(v => v.sitExp !== 'Desistiu').length, quartos: quartosExp(e).length, custos: nCustos };
+  const corpo = { resumo: abaResumoExp, participantes: abaParticipantes, quartos: abaQuartos, custos: abaCustos }[aba](e, r);
+  return `<div class="card exp-cab"><button class="btn peq" data-acao="exp-voltar">${ic('esq')}Expedições</button>
+    <div class="tx"><h2>${esc(e.nome || 'Sem nome')} ${pil(sit.txt, sit.cls)}</h2><p>${esc(e.destino || 'sem destino')} · ${e.inicio ? `${BR(e.inicio)} a ${BR(e.fim)} · ${e.fim ? dias(e.inicio, e.fim) + 1 + ' dias' : ''}` : 'sem datas'}${e.lideres ? ' · líderes: ' + esc(e.lideres) : ''}</p></div>
+    <button class="btn peq edita" data-acao="editar-exp" data-id="${esc(e.id)}">${ic('editar')}Editar expedição</button></div>
+  <div class="filtros">${chips(aba, ABAS_EXP.map(([k, t]) => [k, t, cont[k]]), 'exp-aba')}</div>${corpo}`;
+}
+function abaResumoExp(e, r) {
+  const al = alertasExp(e);
+  const kpi = (rot, val, det, cls = '') => `<div class="card kpi ${cls}"><span class="faixa"></span><div class="rot">${rot}</div><div class="val">${val}</div><div class="det">${det}</div></div>`;
+  const outras = Object.entries(r.outras).map(([m, v]) => din(v, m)).join(' + ');
+  const pctRec = r.receita ? Math.round(100 * r.recebido / r.receita) : 0;
+  const preco = t => { const p = precoQuarto(e, t); return p === null ? '<span class="sub">a preencher</span>' : din(p, e.moeda); };
+  const quitar = e.inicio && tem(e.quitarDias) ? addDias(e.inicio, -e.quitarDias) : '';
+  const porSit = OPC.sitExp.map(s => [s, r.ps.filter(v => v.sitExp === s).length]).filter(([, n]) => n);
+  return `<div class="kpis">
+    ${kpi('Vagas', `${r.ocupadas}${e.vagasMax ? '/' + e.vagasMax : ''}`, e.vagasMin && r.ocupadas < e.vagasMin ? `faltam ${e.vagasMin - r.ocupadas} para o mínimo` : e.vagasMin ? 'mínimo atingido ✓' : `${r.interessados} interessados`, e.vagasMin && r.ocupadas < e.vagasMin ? 'at' : 'ok')}
+    ${kpi('Receita prevista', dinCurto(r.receita, r.m), `${r.ocupadas} ${r.ocupadas === 1 ? 'pessoa' : 'pessoas'} com vaga`, 'coral')}
+    ${kpi('Já recebido', dinCurto(r.recebido, r.m), `${pctRec}% da receita`, 'ok')}
+    ${kpi('A receber', dinCurto(r.aReceber, r.m), r.atrasado ? `${din(r.atrasado, r.m)} atrasado` : 'nada atrasado', r.atrasado ? 'ruim' : 'at')}
+    ${kpi('Custos', dinCurto(r.custo, r.m), `${outras ? '+ ' + outras + ' · ' : ''}pago ${dinCurto(r.custoPago, r.m)}`)}
+    ${kpi('Margem prevista', r.margem === null ? '—' : dinCurto(r.margem, r.m), r.margem === null ? 'sem participantes com vaga' : r.receita ? numBR(100 * r.margem / r.receita, 0) + '% da receita' : '—', r.margem !== null && r.margem < 0 ? 'ruim' : 'ok')}
+  </div>
+  <div class="grade2">
+    <div class="card"><div class="cab"><h3>Precisa de atenção</h3>${pil(al.length, al.length ? (al.some(a => a.cls === 'ruim') ? 'ruim' : 'at') : 'ok')}</div>
+      <div class="alertas">${al.map(linhaAlerta).join('') || '<div class="vazio">Tudo em ordem nesta expedição. 🌸</div>'}</div></div>
+    <div class="card"><div class="cab"><h3>Vagas, preço e condições</h3></div><div class="pad" style="padding-top:2px">
+      ${barraVagas(e, r)}
+      ${porSit.length ? `<div class="chips" style="margin:10px 0 4px">${porSit.map(([s, n]) => pil(`${s}: ${n}`, CLS_SIT_EXP[s])).join(' ')}</div>` : ''}
+      <dl class="dl" style="margin-top:12px"><dt>Quarto duplo</dt><dd>${preco('Duplo')} <span class="sub">por pessoa</span></dd>
+        <dt>Quarto individual</dt><dd>${preco('Individual')}${tem(e.adicIndividual) ? ` <span class="sub">(adicional de ${din(e.adicIndividual, e.moeda)})</span>` : ''}</dd>
+        <dt>Quarto triplo</dt><dd>${tem(e.precoTriplo) ? din(e.precoTriplo, e.moeda) + ' <span class="sub">por pessoa</span>' : '<span class="sub">—</span>'}</dd>
+        <dt>Entrada</dt><dd>${tem(e.entradaPct) ? numBR(e.entradaPct, 0) + '%' : '<span class="sub">a preencher</span>'}</dd>
+        <dt>Quitar até</dt><dd>${quitar ? `${BR(quitar)} <span class="sub">(${numBR(e.quitarDias, 0)} dias antes do início)</span>` : '<span class="sub">a preencher</span>'}</dd></dl>
+      <p class="dica" style="margin-top:12px">${r.empate ? `Com o preço do quarto duplo, os custos fixos do grupo se pagam a partir de <b>${r.empate} ${r.empate === 1 ? 'pessoa' : 'pessoas'}</b>.` : nCustosExp(e) ? 'Preencha o preço do quarto duplo para ver a partir de quantas pessoas a expedição se paga.' : 'Lance os custos do grupo para ver a margem e a partir de quantas pessoas a expedição se paga.'}</p>
+      ${e.obs ? `<p style="margin:10px 0 0;white-space:pre-line">${esc(e.obs)}</p>` : ''}</div></div>
+  </div>`;
+}
+const nCustosExp = e => DB.custos.filter(c => c.expedicao === e.id).length;
+function abaParticipantes(e, r) {
+  const ps = ordParticipantes(r.ps);
+  const op = (lista, sel, rot = x => x) => lista.map(x => `<option value="${esc(x)}" ${x === sel ? 'selected' : ''}>${esc(rot(x))}</option>`).join('');
+  const add = pode('editar') ? `<div class="card pad exp-add"><b>Adicionar participante</b>
+    <div class="linha"><input id="np-nome" list="dl-pessoas" placeholder="Nome do cliente (da base ou novo)" autocomplete="off">
+      <select id="np-tipo" title="Tipo de quarto">${op(OPC.tipoQuarto, S.ultTipo || 'Duplo', t => ROT_QUARTO[t])}</select>
+      <select id="np-sit" title="Situação">${op(OPC.sitExp, S.ultSit || 'Reservado')}</select>
+      <button class="btn prim" data-acao="add-part">${ic('mais')}Adicionar</button></div>
+    <span class="dica">O preço vem do tipo de quarto (${precoQuarto(e, 'Duplo') === null ? 'preencha os preços em Editar expedição' : `duplo ${din(precoQuarto(e, 'Duplo'), e.moeda)} por pessoa`}); dá para ajustar na pessoa. Reservado e Confirmado ocupam vaga.</span></div>` : '';
+  const linhas = ps.map(v => {
+    const pp = DB.parcelas.filter(p => p.viagem === v.id); const pago = pp.filter(p => p.pago).reduce((s, p) => s + (p.valor || 0), 0);
+    const aberto = pp.filter(p => !p.pago).reduce((s, p) => s + (p.valor || 0), 0); const atr = pp.some(p => statusParcela(p) === 'Atrasado');
+    const tot = totalViagem(v); const its = itensDe(v); const c = clientePorNome(v.cliente); const falta = tot - pago - aberto;
+    return `<tr class="clic ${v.sitExp === 'Desistiu' ? 'apagada' : ''}" data-acao="participante" data-id="${esc(v.id)}">
+      <td data-l=""><div class="pessoa">${ini(v.cliente)}<span style="min-width:0"><b>${esc(v.cliente)}</b><span>${c ? esc(c.celular || c.email || 'na base') : 'ainda não está na base'}</span></span></div></td>
+      <td data-l="Situação">${pode('editar') ? `<select class="sel-mini" data-sitexp="${esc(v.id)}" onclick="event.stopPropagation()">${op(OPC.sitExp, v.sitExp)}</select>` : pil(v.sitExp, CLS_SIT_EXP[v.sitExp])}</td>
+      <td data-l="Quarto">${esc(ROT_QUARTO[v.tipoQuarto] || v.tipoQuarto || '—')}<div class="sub">${v.quarto ? esc(v.quarto) : 'sem quarto'}</div></td>
+      <td data-l="Valor" class="num">${din(tot, v.moeda)}${its.length ? `<div class="sub">pacote ${din(v.valorVenda, v.moeda)} + ${its.length} ${its.length === 1 ? 'item' : 'itens'}</div>` : ''}</td>
+      <td data-l="Pago" class="num">${din(pago, v.moeda)}${tot ? `<div class="sub">${Math.round(100 * pago / tot)}%</div>` : ''}</td>
+      <td data-l="Em aberto" class="num">${aberto ? `${din(aberto, v.moeda)}${atr ? `<div>${pil('atrasada', 'ruim')}</div>` : ''}` : '<span class="sub">—</span>'}${falta > 0.009 && ocupaVaga(v) ? `<div class="sub">${din(falta, v.moeda)} sem parcela</div>` : ''}</td>
+      <td data-l="Passaporte">${c ? pil(statusPass(c), { 'Em dia': 'ok', 'Vence em menos de 1 ano': 'at' }[statusPass(c)] || 'ruim') : '<span class="sub">—</span>'}</td></tr>`;
+  }).join('');
+  return `${add}<div class="tabela-env"><table class="tabela"><thead><tr><th>Participante</th><th>Situação</th><th>Quarto</th><th class="num">Valor</th><th class="num">Pago</th><th class="num">Em aberto</th><th>Passaporte</th></tr></thead>
+    <tbody>${linhas || '<tr><td colspan="7" class="vazio">Ninguém nesta expedição ainda.</td></tr>'}</tbody></table></div>`;
+}
+function abaQuartos(e, r) {
+  const qs = quartosExp(e); const sem = ordParticipantes(r.ps.filter(v => v.sitExp !== 'Desistiu' && !v.quarto));
+  const nomes = qs.map(q => q.nome); const novo = proximoQuarto(e);
+  const selQ = v => pode('editar') ? `<select class="sel-mini" data-quarto="${esc(v.id)}" title="Mudar de quarto"><option value="">sem quarto</option>${nomes.map(n => `<option ${n === v.quarto ? 'selected' : ''}>${esc(n)}</option>`).join('')}<option value="${esc(novo)}">+ ${esc(novo)} (novo)</option></select>` : '';
+  const pessoa = v => `<div class="q-pessoa">${ini(v.cliente)}<span class="tx"><b class="linkp" data-acao="participante" data-id="${esc(v.id)}">${esc(v.cliente)}</b><span>${esc(ROT_QUARTO[v.tipoQuarto] || '')}${ocupaVaga(v) ? '' : ' · ' + esc(v.sitExp.toLowerCase())}</span></span>${selQ(v)}</div>`;
+  return `<div class="filtros"><span class="dica">${qs.length} ${qs.length === 1 ? 'quarto' : 'quartos'} · ${r.ps.filter(v => v.sitExp !== 'Desistiu' && v.quarto).length} pessoas acomodadas${sem.length ? ` · <b>${sem.length} sem quarto</b>` : ''}. O tipo do quarto vem das pessoas (Duplo, Casal, Triplo ou Individual).</span>
+    <span style="margin-left:auto"></span><button class="btn" data-acao="copiar-quartos" ${qs.length ? '' : 'disabled'}>${ic('copiar')}Copiar lista de quartos</button></div>
+  ${sem.length ? `<div class="card pad q-sem"><h4>Sem quarto (${sem.length})</h4>${sem.map(pessoa).join('')}</div>` : ''}
+  <div class="q-grade">${qs.map(q => `<div class="card q-card ${q.alerta ? (q.ps.length > q.cap ? 'ruim' : 'at') : ''}"><div class="q-cab">${ic('cama')}<b>${esc(q.nome)}</b>${pil(ROT_QUARTO[q.tipo] || q.tipo, 'navy')}<span class="q-cap">${q.ps.length}/${q.cap}</span></div>
+      ${q.ps.map(pessoa).join('')}${q.alerta ? `<div class="q-alerta">${ic('alerta')}${esc(q.alerta)}${q.ps.length < q.cap && q.tipo !== 'Individual' ? ' · achar dupla ou cobrar quarto individual' : ''}</div>` : ''}</div>`).join('') || (sem.length ? '' : '<div class="card vazio">Adicione participantes para montar os quartos.</div>')}</div>`;
+}
+function abaCustos(e, r) {
+  const h = hojeISO();
+  const cs = DB.custos.filter(c => c.expedicao === e.id).sort((a, b) => (a.vencimento || '9') < (b.vencimento || '9') ? -1 : 1);
+  const st = c => c.pago ? 'Pago' : !c.vencimento ? 'Sem data' : c.vencimento < h ? 'Atrasado' : 'Pendente';
+  const indiv = r.oc.flatMap(v => itensDe(v).filter(i => tem(i.custo)).map(i => ({ v, i })));
+  return `<div class="filtros"><span class="dica">Custos do grupo: <b>${din(r.custoGrupo, r.m)}</b>${Object.keys(r.outras).length ? ' + ' + Object.entries(r.outras).map(([m, v]) => din(v, m)).join(' + ') : ''} · pago ${din(r.custoPago, r.m)} · custos individuais ${din(r.custoInd, r.m)}. Valor "por pessoa" multiplica por ${r.ocupadas} (quem tem vaga).</span>
+    <span style="margin-left:auto"></span><button class="btn prim edita" data-acao="novo-custo" data-id="${esc(e.id)}">${ic('mais')}Novo custo</button></div>
+  <div class="tabela-env"><table class="tabela"><thead><tr><th>Custo</th><th>Fornecedor</th><th class="num">Valor</th><th>Vencimento</th><th>Situação</th><th></th></tr></thead><tbody>
+  ${cs.map(c => { const s = st(c); return `<tr class="clic ${s === 'Atrasado' ? 'atrasado' : ''}" data-acao="custo" data-id="${esc(c.id)}"><td data-l=""><b>${esc(c.descricao || '—')}</b><div class="sub">${esc(c.categoria || '')}</div></td>
+    <td data-l="Fornecedor">${esc(c.fornecedor || '—')}</td>
+    <td data-l="Valor" class="num">${c.porPessoa ? `${din(c.valor, c.moeda)} <span class="sub">por pessoa</span><div class="sub">× ${r.ocupadas} = ${din(valorCusto(c, r.ocupadas), c.moeda)}</div>` : din(c.valor, c.moeda)}</td>
+    <td data-l="Vencimento">${BR(c.vencimento) || '<span class="sub">definir</span>'}</td><td data-l="Situação">${pil(s, CLS_PARC[s])}${c.pago && c.dataPaga ? `<div class="sub">em ${BR(c.dataPaga)}</div>` : ''}</td>
+    <td data-l="">${c.pago ? '' : `<button class="btn peq edita" data-acao="pagar-custo" data-id="${esc(c.id)}" title="Marcar como pago hoje">${ic('check')}Pago</button>`}</td></tr>`; }).join('') || '<tr><td colspan="6" class="vazio">Nenhum custo lançado. Lance hotel, voos internos, passeios, guia… (total do grupo ou por pessoa).</td></tr>'}
+  </tbody></table></div>
+  ${indiv.length ? `<div class="card pad" style="margin-top:14px"><b style="color:var(--navy)">Custos individuais (dos itens de cada participante)</b><div class="mini-lista" style="margin-top:6px">${indiv.map(({ v, i }) => `<div class="it" style="cursor:pointer" data-acao="participante" data-id="${esc(v.id)}"><span class="esp"><b>${esc(v.cliente)}</b> · ${esc(i.descricao)}</span><b>${din(i.custo, i.moeda || v.moeda)}</b></div>`).join('')}</div></div>` : ''}`;
 }
 
 /* ======================== CALENDARIO ======================== */
@@ -1785,6 +2095,8 @@ const VIEWS = {
   resumo: { tit: 'Painel', curto: 'Painel', ic: 'resumo', render: vResumo },
   clientes: { tit: 'Clientes', curto: 'Clientes', sub: 'base para contratos e reservas', ic: 'clientes', render: vClientes, novo: ['Novo cliente', () => formCliente()] },
   viagens: { tit: 'Viagens', curto: 'Viagens', sub: 'vendas e reservas', ic: 'viagens', render: vViagens, novo: ['Nova viagem', () => formViagem()] },
+  expedicoes: { tit: 'Expedições', curto: 'Expedições', sub: 'viagens em grupo', ic: 'expedicoes', render: vExpedicoes,
+    novo: [() => expDe(S.expId) ? 'Participante' : 'Nova expedição', () => { if (!expDe(S.expId)) return formExpedicao(); S.expAba = 'participantes'; render(); $('#np-nome')?.focus(); }] },
   parcelas: { tit: 'Parcelas', curto: 'Parcelas', sub: 'pagamentos e cobranças', ic: 'parcelas', render: vParcelas, novo: ['Nova parcela', () => formParcela()] },
   checklist: { tit: 'Vai Dar Merda', curto: 'Checklist', sub: 'checklist pré-embarque', ic: 'checklist', render: vChecklist },
   calendario: { tit: 'Calendário', curto: 'Agenda', ic: 'calendario', render: vCalendario },
@@ -1796,7 +2108,9 @@ let G = null;   // o que esta aberto na gaveta
 /* papel de quem entrou: admin (aprova acessos e edita), editor (cadastra e altera), leitor (so consulta) */
 const consulta = () => P.papel === 'leitor';
 const ALTERA = new Set(['novo', 'novo-cliente-nome', 'salvar-cliente', 'excluir-cliente', 'editar-viagem', 'salvar-viagem', 'excluir-viagem', 'nova-parcela-v', 'salvar-parcela',
-  'excluir-parcela', 'gerar-parcelas', 'salvar-gerar', 'pagar', 'ck', 'ck-tudo', 'modelo', 'mod-novo', 'mod-tira', 'mod-sobe', 'mod-desce', 'mod-salvar', 'importar']);
+  'excluir-parcela', 'gerar-parcelas', 'salvar-gerar', 'pagar', 'ck', 'ck-tudo', 'modelo', 'mod-novo', 'mod-tira', 'mod-sobe', 'mod-desce', 'mod-salvar', 'importar',
+  'editar-exp', 'salvar-exp', 'excluir-exp', 'add-part', 'salvar-part', 'tirar-part', 'item-novo', 'item-tira', 'gerar-parc-exp', 'salvar-gerar-exp',
+  'novo-custo', 'salvar-custo', 'excluir-custo', 'pagar-custo']);
 const estreito = () => window.matchMedia('(max-width: 760px)').matches;
 
 /* ---------------- interface base ---------------- */
@@ -1851,7 +2165,7 @@ function render() {
   const v = VIEWS[S.view] || VIEWS.resumo;
   const guarda = {}; ['#conteudo', '.ck-lista', '.tabela-env', '#lt-pg', '#lt-painel'].forEach(s => { const e = $(s); if (e) guarda[s] = [e.scrollTop, e.scrollLeft]; });
   $('#titulo').innerHTML = esc(v.tit) + (v.sub ? ` <small>${esc(v.sub)}</small>` : '');
-  const b = $('#bt-novo'); if (v.novo) { b.style.display = ''; b.innerHTML = ic('mais') + esc(v.novo[0]); } else b.style.display = 'none';
+  const b = $('#bt-novo'); if (v.novo) { b.style.display = ''; b.innerHTML = ic('mais') + esc(typeof v.novo[0] === 'function' ? v.novo[0]() : v.novo[0]); } else b.style.display = 'none';
   $('.busca').style.display = ['clientes', 'viagens', 'parcelas'].includes(S.view) ? '' : 'none';
   DEPOIS.length = 0;
   $('#conteudo').innerHTML = v.render();
@@ -2024,8 +2338,11 @@ function excluirViagem() {
   const v = viagemDe(G.id); if (!v) return;
   const np = DB.parcelas.filter(p => p.viagem === v.id).length;
   if (!confirm(`Excluir a viagem ${v.id} (${v.cliente} · ${v.destino})?${np ? `\nAs ${np} parcelas dela também serão excluídas.` : ''}\n\nSe ela só não vai mais acontecer, prefira mudar o status para "Cancelada".`)) return;
-  DB.viagens = DB.viagens.filter(x => x.id !== v.id); DB.parcelas = DB.parcelas.filter(p => p.viagem !== v.id); DB.checklist = DB.checklist.filter(c => c.viagem !== v.id);
-  mudou('viagens', 'parcelas', 'checklist', 'clientes'); fecharGaveta(); render(); toast('Viagem excluída');
+  apagaViagem(v.id); fecharGaveta(); render(); toast('Viagem excluída');
+}
+function apagaViagem(id) {
+  DB.viagens = DB.viagens.filter(x => x.id !== id); DB.parcelas = DB.parcelas.filter(p => p.viagem !== id); DB.checklist = DB.checklist.filter(c => c.viagem !== id); DB.itens = DB.itens.filter(i => i.viagem !== id);
+  mudou('viagens', 'parcelas', 'checklist', 'itens', 'clientes');
 }
 
 /* ----- ficha da viagem (clicar na pessoa) ----- */
@@ -2040,12 +2357,17 @@ function abrirFicha(id) {
   const lugares = GEO.lugares(v.destino);
   const limiteVolta = addDias(v.fim || v.inicio || hojeISO(), 180);
   const dl = linhas => `<dl class="dl">${linhas.filter(([, val]) => val !== null && val !== undefined && val !== '').map(([k, val]) => `<dt>${k}</dt><dd>${val}</dd>`).join('')}</dl>`;
+  const ex = v.expedicao && expDe(v.expedicao);
+  const blocoExp = ex ? `<div class="secao"><h4>Expedição</h4>${dl([['Expedição', esc(ex.nome)], ['Situação', pil(v.sitExp || '—', CLS_SIT_EXP[v.sitExp])], ['Quarto', `${esc(ROT_QUARTO[v.tipoQuarto] || v.tipoQuarto || '—')} · ${v.quarto ? esc(v.quarto) : 'sem quarto'}`],
+      ['Itens individuais', itensDe(v).map(i => `${esc(i.descricao || 'item')} ${din(i.valor, i.moeda || v.moeda)}`).join(' · ') || '—'], ['Total', `<b>${din(totalViagem(v), v.moeda)}</b>`]])}
+    <div style="margin-top:10px;display:flex;gap:8px;flex-wrap:wrap"><button class="btn peq edita" data-acao="participante" data-id="${esc(v.id)}">${ic('editar')}Editar na expedição</button><button class="btn peq" data-acao="exp-abrir" data-id="${esc(ex.id)}">${ic('expedicoes')}Abrir expedição</button></div></div>` : '';
   abrirGaveta(`${esc(v.id)} · ${esc(v.destino)}`, `
     <div class="ficha-cab">${ini(v.cliente, 'g')}<div style="min-width:0"><h3>${esc(v.cliente)}</h3><p>${esc(v.destino)} · ${BR(v.inicio)} a ${BR(v.fim)} · ${duracao(v) ?? '?'} dias</p>
       <div class="contatos">${pil(s.txt, s.cls)} ${pil(v.servico || 'sem serviço', 'navy')} ${v.confirmacao ? pil(TXT_RESERVA[v.confirmacao] || 'reserva ' + v.confirmacao.toLowerCase(), v.confirmacao === 'Confirmado' ? 'ok' : v.confirmacao === 'Cancelado' ? 'ruim' : 'at') : ''}</div></div></div>
     <div class="secao"><h4>Cliente</h4>${c ? dl([['Celular', c.celular ? `${esc(c.celular)} <a class="icone" href="${linkZap(c.celular)}" target="_blank" title="WhatsApp">${ic('zap')}</a>` : '—'], ['E-mail', c.email ? `<a href="mailto:${esc(c.email)}">${esc(c.email)}</a>` : '—'], ['CPF', esc(c.cpf) || '—'], ['Passaporte', c.passaporte ? `${esc(c.passaporte)}${c.validade ? ' · validade ' + BR(c.validade) : ''}` : '—']])
         + `<div style="margin-top:10px"><button class="btn peq" data-acao="cliente" data-id="${esc(c.id)}">${ic('editar')}Abrir cadastro</button></div>`
       : `<div class="dica" style="margin-bottom:8px">${esc(v.cliente)} ainda não está na base de clientes.</div><button class="btn peq" data-acao="novo-cliente-nome" data-nome="${esc(v.cliente)}">${ic('mais')}Cadastrar cliente</button>`}</div>
+    ${blocoExp}
     <div class="secao"><h4>Viagem</h4>${dl([['Passageiros', `${v.pax ?? '?'}${pax.length ? ' · ' + esc(pax.join(', ')) : ''}`], ['Destino no mapa', lugares.map(l => l.falta ? `<span style="color:var(--ruim)">${esc(l.nome)} (não achei)</span>` : esc(l.nome)).join(', ')],
       ['Fornecedor', esc(v.fornecedor) || '—'], ['Status da venda', esc(v.status)], ['Data da venda', BR(v.dataVenda)], ['Observações', esc(v.obs)]])}</div>
     ${passaportes.length ? `<div class="secao"><h4>Passaportes</h4><div class="mini-lista">${passaportes.map(p => { const ok = p.validade && p.validade >= limiteVolta; return `<div class="it" style="cursor:pointer" data-acao="cliente" data-id="${esc(p.id)}">${ic('pass')}<span class="esp"><b>${esc(p.nome)}</b> · ${p.validade ? 'validade ' + BR(p.validade) : 'sem validade cadastrada'}</span>${p.validade ? pil(ok ? 'ok para a viagem' : 'menos de 6 meses após a volta', ok ? 'ok' : 'ruim') : pil('cadastrar', 'at')}</div>`; }).join('')}</div></div>` : ''}
@@ -2095,7 +2417,7 @@ function gerarParcelas(viagemId = '') {
     { k: 'total', rot: 'Valor total', tipo: 'num', obr: true, l: 'l2' }, { k: 'moeda', rot: 'Moeda', tipo: 'sel', op: OPC.moeda, l: 'l2' }, { k: 'n', rot: 'Nº de parcelas', tipo: 'num', obr: true, l: 'l2', ph: '3' },
     { k: 'primeira', rot: '1º vencimento', tipo: 'data', obr: true, l: 'l3' }, { k: 'intervalo', rot: 'Intervalo', tipo: 'sel', op: ['mensal', 'quinzenal', 'semanal'], l: 'l3' }];
   G = { tipo: 'gerar', cs };
-  abrirGaveta('Gerar parcelas', `<p class="dica" style="margin-top:0">Divide o valor total em parcelas iguais (os centavos que sobrarem vão para a última).</p>${secao('Parcelamento', cs, { viagem: viagemId || opViagens()[0], moeda: v0?.moeda || 'USD', forma: 'Pix', intervalo: 'mensal', primeira: hojeISO(), total: v0?.valorVenda ?? null })}<div id="prev-parc" class="secao" style="display:none"></div>`,
+  abrirGaveta('Gerar parcelas', `<p class="dica" style="margin-top:0">Divide o valor total em parcelas iguais (os centavos que sobrarem vão para a última).</p>${secao('Parcelamento', cs, { viagem: viagemId || opViagens()[0], moeda: v0?.moeda || 'USD', forma: 'Pix', intervalo: 'mensal', primeira: hojeISO(), total: v0 ? (v0.expedicao ? totalViagem(v0) : v0.valorVenda) : null })}<div id="prev-parc" class="secao" style="display:none"></div>`,
     `<span class="esp"></span><button class="btn" data-acao="fechar">Cancelar</button><button class="btn prim" data-acao="salvar-gerar">${ic('check')}Criar parcelas</button>`);
   previaParcelas();
 }
@@ -2129,6 +2451,216 @@ function cobrar(pid) {
   const st = statusParcela(p);
   const msg = `Oi, ${primeiro}! Tudo bem? 😊 Passando para lembrar da parcela ${p.numero ?? ''} da viagem para ${v.destino}, no valor de ${din(p.valor, p.moeda)}, ${st === 'Atrasado' ? 'que venceu em' : 'com vencimento em'} ${BR(p.prevista)}. Qualquer dúvida, estou por aqui! ✈️`;
   window.open(linkZap(c.celular, msg), '_blank');
+}
+
+/* ----- expedicao (viagem em grupo) ----- */
+const rotMoeda = o => o === 'Outra' ? 'Outra' : `${o} (${SIMB[o]})`;
+const CAMPOS_EXP = {
+  dados: [
+    { k: 'id', rot: 'ID', tipo: 'auto', l: 'l2' }, { k: 'nome', rot: 'Nome da expedição', obr: true, l: 'l4', ph: 'como ela chama a viagem em grupo' },
+    { k: 'destino', rot: 'Destino', obr: true, l: 'l4', lista: 'dl-destinos', ph: 'país ou cidades', dica: 'Vale para todos os participantes (e para o mapa).' },
+    { k: 'situacao', rot: 'Situação', tipo: 'sel', op: OPC.sitGrupo, l: 'l2' },
+    { k: 'inicio', rot: 'Data de início', tipo: 'data', obr: true, l: 'l2' }, { k: 'fim', rot: 'Data de término', tipo: 'data', l: 'l2' },
+    { k: 'moeda', rot: 'Moeda', tipo: 'sel', op: OPC.moeda, l: 'l2', rotOp: rotMoeda },
+    { k: 'vagasMin', rot: 'Mínimo de pessoas', tipo: 'num', l: 'l2', ph: '—' }, { k: 'vagasMax', rot: 'Máximo de pessoas', tipo: 'num', l: 'l2', ph: '—' },
+    { k: 'lideres', rot: 'Líderes', l: 'l2', ph: 'quem acompanha' }],
+  preco: [
+    { k: 'precoDuplo', rot: 'Por pessoa · quarto duplo', tipo: 'num', l: 'l2', ph: 'a preencher' },
+    { k: 'adicIndividual', rot: 'Adicional · quarto individual', tipo: 'num', l: 'l2', ph: 'a preencher' },
+    { k: 'precoTriplo', rot: 'Por pessoa · quarto triplo', tipo: 'num', l: 'l2', ph: 'se tiver' },
+    { k: 'entradaPct', rot: 'Entrada (%)', tipo: 'num', l: 'l2', ph: '—' }, { k: 'quitarDias', rot: 'Quitar até (dias antes do início)', tipo: 'num', l: 'l2', ph: '—' },
+    { k: 'quitarData', rot: 'Data limite', tipo: 'auto', l: 'l2', val: e => e.inicio && tem(e.quitarDias) ? BR(addDias(e.inicio, -e.quitarDias)) : '—' }],
+  obs: [{ k: 'obs', rot: 'Observações', tipo: 'area', l: 'l6', ph: 'o que está incluso, regras, combinados com fornecedores…' }]
+};
+const todosCamposExp = () => [...CAMPOS_EXP.dados, ...CAMPOS_EXP.preco, ...CAMPOS_EXP.obs];
+function formExpedicao(e = null) {
+  const novo = !e;
+  e = e ? { ...e } : { ...vazioDe('expedicoes'), id: proximoId('expedicoes'), moeda: 'USD', situacao: 'Montando' };
+  G = { tipo: 'expedicao', id: novo ? null : e.id, novoId: e.id };
+  abrirGaveta(novo ? 'Nova expedição' : `Editar ${esc(e.nome)}`,
+    secao('Expedição', CAMPOS_EXP.dados, e)
+    + `<div class="secao"><h4>Preço fechado por pessoa e condições</h4><p class="dica" style="margin-top:0">Cada participante entra com o preço do tipo de quarto dele (dá para ajustar na pessoa). Quarto individual = preço do duplo + adicional. Deixe em branco o que ainda não estiver definido.</p><div class="campos">${CAMPOS_EXP.preco.map(f => campo(f, typeof f.val === 'function' ? f.val(e) : e[f.k])).join('')}</div></div>`
+    + secao('Observações', CAMPOS_EXP.obs, e),
+    `${!novo ? `<button class="btn perigo" data-acao="excluir-exp">${ic('lixo')}Excluir</button>` : ''}<span class="esp"></span><button class="btn" data-acao="fechar">Cancelar</button><button class="btn prim" data-acao="salvar-exp">${ic('check')}Salvar</button>`, 'larga');
+  setTimeout(() => (novo ? $('#f-nome') : null)?.focus(), 250);
+}
+function atualizaAutosExp() {
+  const o = lerCampos(todosCamposExp()); const d = $('#f-quitarData');
+  if (d) d.textContent = o.inicio && tem(o.quitarDias) ? BR(addDias(o.inicio, -o.quitarDias)) : '—';
+}
+function salvarExpedicao() {
+  const cs = todosCamposExp(); const o = lerCampos(cs); if (!exige(cs, o)) return;
+  if (o.fim && o.inicio && o.fim < o.inicio) { $('[data-campo="fim"]').classList.add('erro'); toast('A data de término está antes do início.'); return; }
+  let e, antes = null;
+  if (G.id) { e = expDe(G.id); antes = { ...e }; Object.assign(e, o); }
+  else { e = { ...vazioDe('expedicoes'), ...o, id: DB.expedicoes.some(x => x.id === G.novoId) ? proximoId('expedicoes') : G.novoId }; DB.expedicoes.push(e); }
+  // participantes acompanham destino, datas, moeda e preco (so quem ainda estava com o valor antigo da expedicao)
+  let n = 0;
+  if (antes) participantes(e).forEach(v => {
+    let mud = false;
+    ['destino', 'inicio', 'fim', 'moeda'].forEach(k => { if (antes[k] !== e[k] && (v[k] === antes[k] || !v[k])) { v[k] = e[k]; mud = true; } });
+    const pA = precoQuarto(antes, v.tipoQuarto), pN = precoQuarto(e, v.tipoQuarto);
+    if (pN !== pA && (v.valorVenda === pA || !tem(v.valorVenda))) { v.valorVenda = pN; mud = true; }
+    if (mud) n++;
+  });
+  mudou('expedicoes', 'viagens'); listas(); fecharGaveta(); S.expId = e.id;
+  if (S.view === 'expedicoes') render(); else ir('expedicoes');
+  toast(n ? `Expedição salva ✓ · ${n} ${n === 1 ? 'participante atualizado' : 'participantes atualizados'}` : 'Expedição salva ✓', 3200);
+}
+function excluirExpedicao() {
+  const e = expDe(G.id); if (!e) return; const ps = participantes(e); const nc = DB.custos.filter(c => c.expedicao === e.id).length;
+  if (!confirm(`Excluir a expedição "${e.nome}"?${nc ? `\nOs ${nc} custos do grupo também serão excluídos.` : ''}${ps.length ? `\nAs ${ps.length} viagens dos participantes continuam, como viagens avulsas.` : ''}\n\nSe ela só não vai mais acontecer, prefira mudar a situação para "Cancelada".`)) return;
+  ps.forEach(v => { v.expedicao = ''; v.quarto = ''; });
+  DB.custos = DB.custos.filter(c => c.expedicao !== e.id); DB.expedicoes = DB.expedicoes.filter(x => x.id !== e.id);
+  S.expId = null; mudou('viagens', 'custos', 'expedicoes'); fecharGaveta(); render(); toast('Expedição excluída');
+}
+function addParticipante() {
+  const e = expDe(S.expId); if (!e) return;
+  const nome = $('#np-nome').value.trim(); if (!nome) { toast('Escreva o nome do participante.'); $('#np-nome').focus(); return; }
+  const c = clientePorNome(nome); const nm = c ? c.nome : nome;
+  if (participantes(e).some(v => norm(v.cliente) === norm(nm) && v.sitExp !== 'Desistiu') && !confirm(`${nm} já está nesta expedição. Adicionar de novo?`)) return;
+  const tipo = $('#np-tipo').value, sit = $('#np-sit').value;
+  DB.viagens.push({ ...vazioDe('viagens'), id: proximoId('viagens'), dataVenda: hojeISO(), cliente: nm, pax: 1, destino: e.destino, inicio: e.inicio, fim: e.fim, servico: 'Expedição',
+    status: STATUS_DA_SIT[sit], confirmacao: 'Pendente', moeda: e.moeda || 'USD', valorVenda: precoQuarto(e, tipo), pagtoCliente: 'Pendente', pagtoFornecedor: 'Pendente',
+    expedicao: e.id, tipoQuarto: tipo, sitExp: sit });
+  S.ultTipo = tipo; S.ultSit = sit;
+  mudou('viagens'); listas(); render(); setTimeout(() => $('#np-nome')?.focus(), 30);
+  toast(c ? `${nm} entrou na expedição ✓` : `${nm} entrou na expedição ✓ (ainda não está na base de clientes)`, 3200);
+}
+/* ----- participante: situacao, quarto, preco, itens individuais e parcelas ----- */
+const camposPart = (e, v) => {
+  const nomes = quartosExp(e).map(q => q.nome); const novo = proximoQuarto(e);
+  const ops = [...nomes, ...(v.quarto && !nomes.includes(v.quarto) ? [v.quarto] : []), novo];
+  const ocup = n => quartosExp(e).find(q => q.nome === n);
+  return [
+    { k: 'sitExp', rot: 'Situação', tipo: 'sel', op: OPC.sitExp, l: 'l2', dica: 'Reservado e Confirmado ocupam vaga.' },
+    { k: 'tipoQuarto', rot: 'Tipo de quarto', tipo: 'sel', op: OPC.tipoQuarto, rotOp: t => ROT_QUARTO[t], l: 'l2' },
+    { k: 'quarto', rot: 'Quarto', tipo: 'sel', op: ops, vazio: true, l: 'l2', rotOp: n => n === novo ? `${n} (novo)` : ocup(n) ? `${n} · ${ocup(n).ps.map(x => String(x.cliente).split(' ')[0]).join(', ')}` : n },
+    { k: 'valorVenda', rot: `Preço do pacote (${e.moeda || 'USD'})`, tipo: 'num', l: 'l3', dica: `<span id="dica-preco">${dicaPreco(e, v.tipoQuarto)}</span>` },
+    { k: 'pagtoCliente', rot: 'Pagamento', tipo: 'sel', op: OPC.pagtoCliente, l: 'l3' },
+    { k: 'obs', rot: 'Observações', tipo: 'area', l: 'l6', ph: 'restrição alimentar, com quem quer dividir o quarto, preferências…' }];
+};
+const dicaPreco = (e, tipo) => { const p = precoQuarto(e, tipo); return p === null ? 'Preço da expedição ainda não preenchido.' : `Preço da expedição para ${ROT_QUARTO[tipo].toLowerCase()}: ${din(p, e.moeda)}`; };
+function formParticipante(v) {
+  const e = v && expDe(v.expedicao); if (!e) { if (v) abrirFicha(v.id); return; }
+  G = { tipo: 'participante', id: v.id, itens: itensDe(v).map(i => ({ ...i })), tipoAntes: v.tipoQuarto };
+  const c = clientePorNome(v.cliente);
+  const ps = DB.parcelas.filter(p => p.viagem === v.id).sort((a, b) => (a.prevista || '9') < (b.prevista || '9') ? -1 : 1);
+  abrirGaveta(`${esc(v.cliente)} · ${esc(e.nome)}`, `
+    <div class="ficha-cab">${ini(v.cliente, 'g')}<div style="min-width:0"><h3>${esc(v.cliente)}</h3><p>${esc(v.id)} · ${esc(e.nome)} · ${BR(e.inicio)} a ${BR(e.fim)}</p>
+      <div class="contatos">${c ? `<button class="btn peq" data-acao="cliente" data-id="${esc(c.id)}">${ic('editar')}Cadastro</button>${c.celular ? `<a class="btn peq" href="${linkZap(c.celular)}" target="_blank">${ic('zap')}WhatsApp</a>` : ''}` : `<button class="btn peq" data-acao="novo-cliente-nome" data-nome="${esc(v.cliente)}">${ic('mais')}Cadastrar cliente</button>`}</div></div></div>
+    ${secao('Na expedição', camposPart(e, v), v)}
+    <div class="secao"><h4>Itens individuais</h4><p class="dica" style="margin-top:0">O que é só desta pessoa e soma no valor dela (aéreo internacional emitido por vocês, opcionais, seguro…). Custo é o que vocês pagam, para a margem.</p>
+      <div id="itens-part"></div><datalist id="dl-itens">${[...new Set(DB.itens.map(i => i.descricao).filter(Boolean))].map(x => `<option value="${esc(x)}">`).join('')}</datalist>
+      <button class="btn peq" style="margin-top:8px" data-acao="item-novo">${ic('mais')}Item individual</button></div>
+    <div class="secao"><h4>Total e pagamento</h4><div id="total-part"></div>
+      <div class="mini-lista" style="margin-top:8px">${ps.map(p => { const st = statusParcela(p); return `<div class="it" style="cursor:pointer" data-acao="parcela" data-pid="${esc(p.id)}"><span class="esp">Parcela ${p.numero ?? '?'}${p.obs ? ' · ' + esc(p.obs) : ''}${p.pagador ? ' · ' + esc(p.pagador) : ''} · ${BR(p.prevista) || 'sem data'}</span><b>${din(p.valor, p.moeda)}</b>${pil(st, CLS_PARC[st])}</div>`; }).join('') || '<div class="dica">Nenhuma parcela lançada.</div>'}</div>
+      <div style="margin-top:10px;display:flex;gap:8px;flex-wrap:wrap"><button class="btn peq" data-acao="gerar-parc-exp" data-id="${esc(v.id)}">${ic('lista')}Gerar parcelas (entrada + parcelas)</button><button class="btn peq" data-acao="nova-parcela-v" data-id="${esc(v.id)}">${ic('mais')}Parcela avulsa</button></div></div>`,
+    `<button class="btn perigo" data-acao="tirar-part">${ic('lixo')}Excluir</button><span class="esp"></span><button class="btn" data-acao="ficha" data-id="${esc(v.id)}">Ficha da viagem</button><button class="btn prim" data-acao="salvar-part">${ic('check')}Salvar</button>`, 'larga');
+  desenhaItens();
+}
+const numCampo = x => x === null || x === undefined ? '' : String(x).replace('.', ',');
+function desenhaItens() {
+  const el = $('#itens-part'); if (!el) return;
+  el.innerHTML = G.itens.length ? `<table class="tabela itens-tab"><thead><tr><th>Descrição</th><th style="width:110px">Valor</th><th style="width:110px">Custo</th><th style="width:40px"></th></tr></thead><tbody>
+    ${G.itens.map((i, n) => `<tr><td data-l="Descrição"><input data-item="${n}" data-k="descricao" value="${esc(i.descricao)}" list="dl-itens" placeholder="ex.: aéreo internacional"></td>
+      <td data-l="Valor"><input data-item="${n}" data-k="valor" value="${numCampo(i.valor)}" inputmode="decimal" placeholder="0,00"></td>
+      <td data-l="Custo"><input data-item="${n}" data-k="custo" value="${numCampo(i.custo)}" inputmode="decimal" placeholder="0,00"></td>
+      <td data-l=""><button class="icone" data-acao="item-tira" data-i="${n}" title="Remover">${ic('lixo')}</button></td></tr>`).join('')}</tbody></table>` : '<div class="dica">Nenhum item individual.</div>';
+  if (consulta()) $$('#itens-part input').forEach(x => { x.disabled = true; });
+  totalPart();
+}
+function lerItens() { $$('[data-item]').forEach(el => { const i = G.itens[+el.dataset.item]; if (!i) return; i[el.dataset.k] = el.dataset.k === 'descricao' ? el.value.trim() : lerNum(el.value); }); }
+function totalPart() {
+  const el = $('#total-part'); const v = viagemDe(G?.id); if (!el || !v) return;
+  const pac = lerNum($('#f-valorVenda')?.value) || 0; const its = G.itens.reduce((s, i) => s + (i.valor || 0), 0); const tot = pac + its;
+  const lanc = DB.parcelas.filter(p => p.viagem === v.id).reduce((s, p) => s + (p.valor || 0), 0); const pago = DB.parcelas.filter(p => p.viagem === v.id && p.pago).reduce((s, p) => s + (p.valor || 0), 0);
+  el.innerHTML = `<dl class="dl"><dt>Pacote</dt><dd>${din(pac, v.moeda)}</dd><dt>Itens individuais</dt><dd>${din(its, v.moeda)}</dd><dt>Total</dt><dd><b>${din(tot, v.moeda)}</b></dd>
+    <dt>Em parcelas</dt><dd>${din(lanc, v.moeda)} · pago ${din(pago, v.moeda)}${Math.abs(tot - lanc) > 0.009 ? ` · <b style="color:${tot > lanc ? 'var(--ruim)' : 'var(--atencao)'}">${tot > lanc ? 'falta lançar ' + din(tot - lanc, v.moeda) : 'parcelas passam do total em ' + din(lanc - tot, v.moeda)}</b>` : ' ✓'}</dd></dl>`;
+}
+function salvarParticipante(quieto = false) {
+  const v = viagemDe(G.id); const e = expDe(v?.expedicao); if (!v || !e) return;
+  lerItens();
+  Object.assign(v, lerCampos(camposPart(e, v)));
+  v.status = STATUS_DA_SIT[v.sitExp] || v.status; v.pax = 1;
+  DB.itens = DB.itens.filter(i => i.viagem !== v.id);
+  G.itens.filter(i => i.descricao || tem(i.valor) || tem(i.custo)).forEach(i => DB.itens.push({ ...vazioDe('itens'), ...i, viagem: v.id, moeda: i.moeda || v.moeda, id: i.id || proximoId('itens') }));
+  mudou('viagens', 'itens'); listas();
+  if (quieto) { G.itens = itensDe(v).map(i => ({ ...i })); return; }
+  fecharGaveta(); render(); toast('Participante salvo ✓');
+}
+function tirarParticipante() {
+  const v = viagemDe(G.id); if (!v) return;
+  if (!confirm(`Excluir ${v.cliente} da expedição?\nA viagem dela (${v.id}) é apagada junto com parcelas e itens individuais.\n\nSe a pessoa só desistiu, prefira mudar a situação para "Desistiu".`)) return;
+  apagaViagem(v.id); fecharGaveta(); render(); toast('Participante excluído');
+}
+function textoQuartos(e) {
+  const qs = quartosExp(e); const sem = participantes(e).filter(v => v.sitExp !== 'Desistiu' && !v.quarto);
+  return [`Lista de quartos · ${e.nome}${e.inicio ? ` (${BR(e.inicio)} a ${BR(e.fim)})` : ''}`, '',
+    ...qs.map(q => `${q.nome} · ${ROT_QUARTO[q.tipo] || q.tipo}: ${q.ps.map(v => v.cliente).join(', ')}`),
+    ...(sem.length ? ['', `Sem quarto: ${sem.map(v => v.cliente).join(', ')}`] : [])].join('\n');
+}
+/* ----- parcelas da expedicao: entrada (%) + parcelas iguais ate a data limite ----- */
+const somaMes = (s, n) => { const p = dt(s); const x = new Date(p.getFullYear(), p.getMonth() + n, 1); x.setDate(Math.min(p.getDate(), new Date(x.getFullYear(), x.getMonth() + 1, 0).getDate())); return iso(x); };
+function gerarParcelasExp(vid) {
+  if (G?.tipo === 'participante') salvarParticipante(true);
+  const v = viagemDe(vid); if (!v) return; const e = expDe(v.expedicao);
+  const ja = DB.parcelas.filter(p => p.viagem === v.id).reduce((s, p) => s + (p.valor || 0), 0);
+  const limite = e?.inicio ? (tem(e.quitarDias) ? addDias(e.inicio, -e.quitarDias) : e.inicio) : '';
+  const prim = somaMes(hojeISO(), 1);
+  let n = 1; if (limite) while (n < 48 && somaMes(prim, n) <= limite) n++;
+  const cs = [
+    { k: 'pagador', rot: 'Quem paga', l: 'l4', lista: 'dl-pessoas', ph: 'em branco = o próprio participante' }, { k: 'forma', rot: 'Forma', tipo: 'sel', op: OPC.forma, l: 'l2' },
+    { k: 'total', rot: 'Valor a parcelar', tipo: 'num', obr: true, l: 'l2' }, { k: 'entradaPct', rot: 'Entrada (%)', tipo: 'num', l: 'l2', ph: 'sem entrada' }, { k: 'dataEntrada', rot: 'Data da entrada', tipo: 'data', l: 'l2' },
+    { k: 'n', rot: 'Parcelas depois da entrada', tipo: 'num', obr: true, l: 'l2' }, { k: 'primeira', rot: '1ª parcela em', tipo: 'data', obr: true, l: 'l2' }, { k: 'intervalo', rot: 'Intervalo', tipo: 'sel', op: ['mensal', 'quinzenal', 'semanal'], l: 'l2' }];
+  G = { tipo: 'gerar-exp', cs, vid: v.id, moeda: v.moeda, limite };
+  abrirGaveta(`Gerar parcelas · ${esc(v.cliente)}`, `<p class="dica" style="margin-top:0">A entrada é a porcentagem do valor; o resto vira parcelas iguais (os centavos que sobrarem vão para a última).${limite ? ` Para quitar até <b>${BR(limite)}</b>${tem(e?.quitarDias) ? ` (${numBR(e.quitarDias, 0)} dias antes do início)` : ' (início da expedição)'}.` : ''}${ja ? ` Já existem ${din(ja, v.moeda)} em parcelas desta pessoa: o valor sugerido é o que falta.` : ''}</p>
+    ${secao('Parcelamento', cs, { total: Math.max(0, Math.round((totalViagem(v) - ja) * 100) / 100), entradaPct: ja ? null : (e?.entradaPct ?? null), dataEntrada: hojeISO(), n, primeira: prim, intervalo: 'mensal', forma: 'Pix' })}<div id="prev-parc" class="secao" style="display:none"></div>`,
+    `<span class="esp"></span><button class="btn" data-acao="participante" data-id="${esc(v.id)}">Voltar</button><button class="btn prim" data-acao="salvar-gerar-exp">${ic('check')}Criar parcelas</button>`);
+  previaParcExp();
+}
+function calcParcExp(o) {
+  const tot = o.total || 0; const ent = tem(o.entradaPct) && o.entradaPct > 0 ? Math.round(tot * o.entradaPct) / 100 : 0;
+  const resto = Math.round((tot - ent) * 100) / 100;
+  return (ent ? [{ valor: ent, prevista: o.dataEntrada || hojeISO(), entrada: true }] : []).concat(resto > 0 && o.primeira ? calcParcelas({ ...o, total: resto }) : []);
+}
+function previaParcExp() {
+  if (!G || G.tipo !== 'gerar-exp') return; const o = lerCampos(G.cs); const el = $('#prev-parc');
+  if (!o.total || !o.n || !o.primeira) { el.style.display = 'none'; return; }
+  const xs = calcParcExp(o); const ult = xs[xs.length - 1]?.prevista;
+  el.style.display = ''; el.innerHTML = `<h4>Prévia</h4><div class="mini-lista">${xs.map((x, i) => `<div class="it"><span class="esp">${x.entrada ? 'Entrada' : 'Parcela ' + (i + (xs[0].entrada ? 0 : 1))} · ${BR(x.prevista)}</span><b>${din(x.valor, G.moeda)}</b></div>`).join('')}</div>
+    ${G.limite && ult > G.limite ? `<div style="margin-top:8px;color:var(--ruim);font-weight:600">A última parcela (${BR(ult)}) passa da data limite ${BR(G.limite)}.</div>` : ''}`;
+}
+function salvarGerarExp() {
+  const o = lerCampos(G.cs); if (!exige(G.cs, o)) return;
+  const v = viagemDe(G.vid); if (!v) return;
+  const ja = DB.parcelas.filter(p => p.viagem === v.id).length;
+  const xs = calcParcExp(o);
+  xs.forEach((x, i) => DB.parcelas.push({ ...vazioDe('parcelas'), id: proximoId('parcelas'), viagem: v.id, pagador: o.pagador, numero: ja + i + 1, forma: o.forma, moeda: v.moeda, valor: x.valor, prevista: x.prevista, pago: false, obs: x.entrada ? 'Entrada' : '' }));
+  mudou('parcelas'); render(); formParticipante(v); toast(`${xs.length} parcelas criadas ✓`);
+}
+/* ----- custos do grupo ----- */
+const camposCusto = () => [
+  { k: 'descricao', rot: 'Descrição', obr: true, l: 'l4', ph: 'ex.: hotel, voo interno, ingresso, guia' }, { k: 'categoria', rot: 'Categoria', tipo: 'sel', op: OPC.catCusto, l: 'l2' },
+  { k: 'fornecedor', rot: 'Fornecedor', l: 'l4', lista: 'dl-fornecedores' }, { k: 'moeda', rot: 'Moeda', tipo: 'sel', op: OPC.moeda, l: 'l2', rotOp: rotMoeda },
+  { k: 'valor', rot: 'Valor', tipo: 'num', l: 'l2' }, { k: 'porPessoa', rot: 'Como conta', tipo: 'sn', txt: 'É valor por pessoa (multiplica por quem tem vaga)', l: 'l4' },
+  { k: 'vencimento', rot: 'Vencimento', tipo: 'data', l: 'l2' }, { k: 'dataPaga', rot: 'Pago em', tipo: 'data', l: 'l2' }, { k: 'pago', rot: 'Situação', tipo: 'sn', txt: 'Já foi pago', l: 'l2' },
+  { k: 'obs', rot: 'Observações', tipo: 'area', l: 'l6' }];
+function formCusto(c = null, expId = '') {
+  const novo = !c; const e = expDe(c?.expedicao || expId); if (!e) return;
+  c = c ? { ...c } : { ...vazioDe('custos'), expedicao: e.id, moeda: e.moeda || 'USD', categoria: 'Hospedagem' };
+  G = { tipo: 'custo', id: novo ? null : c.id, expId: e.id };
+  abrirGaveta(novo ? `Novo custo · ${esc(e.nome)}` : `${esc(c.descricao || 'Custo')} · ${esc(e.nome)}`, secao('Custo do grupo', camposCusto(), c),
+    `${!novo ? `<button class="btn perigo" data-acao="excluir-custo">${ic('lixo')}Excluir</button>` : ''}<span class="esp"></span><button class="btn" data-acao="fechar">Cancelar</button><button class="btn prim" data-acao="salvar-custo">${ic('check')}Salvar</button>`);
+  setTimeout(() => (novo ? $('#f-descricao') : null)?.focus(), 250);
+}
+function salvarCusto() {
+  const cs = camposCusto(); const o = lerCampos(cs); if (!exige(cs, o)) return;
+  if (o.dataPaga) o.pago = true;
+  if (o.pago && !o.dataPaga) o.dataPaga = hojeISO();
+  if (G.id) Object.assign(DB.custos.find(x => x.id === G.id), o);
+  else DB.custos.push({ ...vazioDe('custos'), ...o, expedicao: G.expId, id: proximoId('custos') });
+  mudou('custos'); listas(); fecharGaveta(); render(); toast('Custo salvo ✓');
 }
 
 /* ----- itens do checklist (modelo) ----- */
@@ -2286,8 +2818,25 @@ const A = {
   aprovar: async d => { try { await alterarPerfil(d.id, { status: 'aprovado', papel: d.p }); toast(d.p === 'leitor' ? 'Aprovado para consulta ✓' : 'Aprovado ✓'); } catch (e) { toast(traduzErro(e), 4000); } ACESSOS.lista = null; carregaAcessos(); },
   bloquear: async d => { const p = ACESSOS.lista?.find(x => x.id === d.id); if (!confirm(`${p?.status === 'pendente' ? 'Recusar o pedido de' : 'Bloquear o acesso de'} ${p?.nome || p?.email || 'esta pessoa'}?`)) return;
     try { await alterarPerfil(d.id, { status: 'bloqueado' }); toast('Feito ✓'); } catch (e) { toast(traduzErro(e), 4000); } ACESSOS.lista = null; carregaAcessos(); },
-  'copiar-link': async () => { const l = location.href.split('#')[0]; try { await navigator.clipboard.writeText(l); toast('Link copiado ✓'); } catch (e) { prompt('Copie o link:', l); } }
+  'copiar-link': async () => { const l = location.href.split('#')[0]; try { await navigator.clipboard.writeText(l); toast('Link copiado ✓'); } catch (e) { prompt('Copie o link:', l); } },
+  // expedicoes
+  'exp-abrir': d => { S.expId = d.id; S.expAba = 'resumo'; fecharGaveta(); if (S.view === 'expedicoes') { S._mesma = false; render(); $('#conteudo').scrollTop = 0; } else ir('expedicoes'); },
+  'exp-voltar': () => { S.expId = null; S._mesma = false; render(); },
+  'exp-aba': d => { S.expAba = d.k; fecharGaveta(); render(); }, expF: d => { S.expF = d.k; salvaPref(); render(); },
+  'editar-exp': d => formExpedicao(expDe(d.id || S.expId)), 'salvar-exp': salvarExpedicao, 'excluir-exp': excluirExpedicao,
+  'add-part': addParticipante, participante: d => formParticipante(viagemDe(d.id)), 'salvar-part': () => salvarParticipante(), 'tirar-part': tirarParticipante,
+  'item-novo': () => { lerItens(); G.itens.push({ ...vazioDe('itens'), id: '' }); desenhaItens(); setTimeout(() => { const els = $$('[data-item][data-k="descricao"]'); els[els.length - 1]?.focus(); }, 30); },
+  'item-tira': d => { lerItens(); G.itens.splice(+d.i, 1); desenhaItens(); },
+  'gerar-parc-exp': d => gerarParcelasExp(d.id), 'salvar-gerar-exp': salvarGerarExp,
+  'copiar-quartos': async () => { const e = expDe(S.expId); if (!e) return; const t = textoQuartos(e);
+    try { await navigator.clipboard.writeText(t); toast('Lista de quartos copiada ✓ É só colar no WhatsApp ou no e-mail do hotel.', 3800); }
+    catch (err) { abrirGaveta('Lista de quartos', `<p class="dica" style="margin-top:0">Selecione e copie:</p><textarea class="copia" readonly>${esc(t)}</textarea>`); } },
+  custo: d => formCusto(DB.custos.find(c => c.id === d.id)), 'novo-custo': d => formCusto(null, d.id || S.expId), 'salvar-custo': salvarCusto,
+  'excluir-custo': () => { if (!confirm('Excluir este custo do grupo?')) return; DB.custos = DB.custos.filter(c => c.id !== G.id); mudou('custos'); fecharGaveta(); render(); },
+  'pagar-custo': d => { const c = DB.custos.find(x => x.id === d.id); if (!c) return; c.pago = true; c.dataPaga = hojeISO(); mudou('custos'); render(); toast('Custo marcado como pago ✓'); }
 };
+// a partir da gaveta do participante, abrir outra coisa guarda antes o que ela ja mudou
+const GUARDA_PART = new Set(['ficha', 'cliente', 'novo-cliente-nome', 'nova-parcela-v', 'parcela', 'gerar-parc-exp']);
 function diaCalendario(d) {
   const vs = DB.viagens.filter(v => ativa(v) && v.inicio && v.inicio <= d && (v.fim || v.inicio) >= d);
   const ps = DB.parcelas.filter(p => p.prevista === d);
@@ -2305,6 +2854,7 @@ document.addEventListener('click', e => {
   const f = A[a.dataset.acao]; if (!f) return;
   e.preventDefault();
   if (consulta() && ALTERA.has(a.dataset.acao)) { toast('Seu acesso é só de consulta. Para cadastrar ou alterar, peça à administradora para liberar a edição.', 3600); return; }
+  if (G?.tipo === 'participante' && GUARDA_PART.has(a.dataset.acao) && !consulta() && a.closest('#gaveta')) salvarParticipante(true);
   f(a.dataset, a, e);
 });
 document.addEventListener('input', e => {
@@ -2313,6 +2863,9 @@ document.addEventListener('input', e => {
   if (el.id === 'busca') { clearTimeout(el._t); el._t = setTimeout(() => { S.busca = el.value; S._mesma = false; render(); }, 160); }
   if (G?.tipo === 'viagem') atualizaAutosViagem();
   if (G?.tipo === 'gerar') previaParcelas();
+  if (G?.tipo === 'expedicao') atualizaAutosExp();
+  if (G?.tipo === 'gerar-exp') previaParcExp();
+  if (G?.tipo === 'participante') { lerItens(); totalPart(); }
 });
 document.addEventListener('change', e => {
   const el = e.target;
@@ -2324,7 +2877,22 @@ document.addEventListener('change', e => {
   if (G?.tipo === 'gerar') previaParcelas();
   if (G?.tipo === 'parcela' && el.id === 'f-viagem') { const v = viagemDe(el.value); if (v) $('#f-moeda').value = v.moeda || 'USD'; }
   if (G?.tipo === 'parcela' && el.id === 'f-pago' && el.checked && !$('#f-dataPaga').value) $('#f-dataPaga').value = hojeISO();
+  if (G?.tipo === 'custo' && el.id === 'f-pago' && el.checked && !$('#f-dataPaga').value) $('#f-dataPaga').value = hojeISO();
+  // expedicoes: situacao e quarto mudados direto na lista
+  if (el.dataset.sitexp && !consulta()) { const v = viagemDe(el.dataset.sitexp); if (v) { v.sitExp = el.value; v.status = STATUS_DA_SIT[v.sitExp] || v.status; mudou('viagens'); render(); toast(`${v.cliente}: ${v.sitExp.toLowerCase()}`); } }
+  if (el.dataset.quarto && !consulta()) { const v = viagemDe(el.dataset.quarto); if (v) { v.quarto = el.value; mudou('viagens'); render(); } }
+  if (G?.tipo === 'expedicao') atualizaAutosExp();
+  if (G?.tipo === 'gerar-exp') previaParcExp();
+  if (G?.tipo === 'participante') {
+    if (el.id === 'f-tipoQuarto') {                  // preco acompanha o tipo de quarto, se ela ainda nao mexeu no valor
+      const e = expDe(viagemDe(G.id)?.expedicao); const atual = lerNum($('#f-valorVenda').value);
+      if (atual === null || atual === precoQuarto(e, G.tipoAntes)) $('#f-valorVenda').value = numCampo(precoQuarto(e, el.value));
+      G.tipoAntes = el.value; const dp = $('#dica-preco'); if (dp) dp.textContent = dicaPreco(e, el.value);
+    }
+    lerItens(); totalPart();
+  }
 });
+document.addEventListener('keydown', e => { if (e.key === 'Enter' && e.target.id === 'np-nome') { e.preventDefault(); addParticipante(); } });
 document.addEventListener('mouseover', e => {
   const it = e.target.closest('[data-hover]'); const id = it?.dataset.hover;
   $$('.rota.on').forEach(r => { if (r.dataset.rota !== id) r.classList.remove('on'); });
